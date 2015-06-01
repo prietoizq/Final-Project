@@ -1,0 +1,20 @@
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<h1><%= @user.name %></h1>
+<ul>
+	<% @images.each do |image| %>
+		<li>
+			<%= image.url %> 
+			<%= image.direction %> 
+			<%= image.description %>
+			<%= image.rating %>
+		</li>
+	<% end %>
+</ul>
+
+<ul>
+<%= link_to("users", users_path) %>
+<%= link_to("New image", new_user_image_path(@user)) %>
+</ul>

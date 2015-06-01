@@ -1,0 +1,20 @@
+<%= form_for [@user, @image] do |f| %>
+	<%= f.label :url %>
+	<%= f.text_field :url %>
+	<br>
+
+	<%= f.label :direction %>
+	<%= f.text_field :direction %>
+	<br>
+
+	<%= f.label :description %>
+	<%= f.text_field :description %>
+	<br>
+
+	<%= f.label :rating %>
+	<%= f.float_field :rating %>
+	<br>
+
+	<%= f.submit 'Save' %>
+
+<% end %>

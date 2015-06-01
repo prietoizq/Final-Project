@@ -1,0 +1,16 @@
+<% if flash[:alert] %>
+	<%= flash[:alert] %>
+<% end %>
+
+<% if @image.errors.any? %>
+	<ul>
+		<% @image.errors.full_messages.each do |error_msg| %>
+			<li><%= error_msg %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= render "form" %>
+
+<br>
+<%= link_to("Cancel", user_path(@user)) %>
