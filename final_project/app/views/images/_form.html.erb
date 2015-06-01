@@ -1,4 +1,4 @@
-<%= form_for [@user, @image] do |f| %>
+<%= form_for [@user, @image], :html => { :multipart => true} do |f| %>
 	<%= f.label :url %>
 	<%= f.text_field :url %>
 	<br>
@@ -12,7 +12,11 @@
 	<br>
 
 	<%= f.label :rating %>
-	<%= f.float_field :rating %>
+	<%= f.number_field :rating %>
+	<br>
+
+	<%= f.label :photo %>
+	<%= f.file_field :photo %>
 	<br>
 
 	<%= f.submit 'Save' %>

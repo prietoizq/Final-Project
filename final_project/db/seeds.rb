@@ -9,3 +9,6 @@
 user1 = User.create name: "Angel", email: "prietoizq@gmail.com", password: "angel"
 user2 = User.create name: "Admin", email: "admin@gmail.com", password: "admin"
 
+image1 = user1.images.create url: "aaa", direction: "aaa", description: "aaa", rating: "5"
+image2 = user1.images.create url: "aaa", direction: "aaa", description: "aaa", rating: "5"
+image3 = user2.images.create url: "aaa", direction: "aaa", description: "aaa", rating: "5"
