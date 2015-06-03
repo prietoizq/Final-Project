@@ -11,7 +11,7 @@
 <ul>
 	<% @user.images.each do |image| %>
 		<li>
-			<%= image_tag image.photo.url(:thumb) %>
+			<%= image_tag image.photo.url(:medium) %>
 			<%= image.direction %> 
 			<%= image.description %>
 			<%= link_to(" - Edit Image", edit_user_image_path(@user, image)) %>

@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20150601152612) do
 
   create_table "images", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "url"
+    t.string   "title"
     t.string   "direction"
     t.text     "description"
     t.float    "rating"

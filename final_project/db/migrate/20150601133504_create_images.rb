@@ -3,7 +3,7 @@ class CreateImages < ActiveRecord::Migration
     create_table :images do |t|
 
     	t.integer :user_id
-    	t.string :url
+    	t.string :title
     	t.string :direction
     	t.text :description
     	t.float :rating
