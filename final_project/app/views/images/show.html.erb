@@ -1,0 +1,21 @@
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<h1>SHOW IMAGE FROM USER: <%= @user.name %></h1>
+<ul>
+	<li>
+		<%= @image.title %> 
+		<%= image_tag @image.photo.url(:large) %>
+		<%= @image.direction %> 
+		<%= @image.description %>
+		<%= @image.rating %>
+	</li>
+</ul>
+
+<ul>
+<%= link_to("Back to user", user_path(@user)) %>
+<%= link_to("New image", new_user_image_path(@user)) %>
+</ul>
+
+

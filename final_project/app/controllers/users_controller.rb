@@ -20,10 +20,11 @@ class UsersController < ApplicationController
 		@user = User.new user_params #aquí se llama al metodo privado project_params (mas abajo)
 		if @user.save #si es valido, este .save devuelve true, y se guarda. Y si es false, no lo guarda. Con el save comprueba las validaciones que le pusimos en el modelo del project
 			flash[:notice] = "User created successfully"
+			session[:user_id] = @user.id
 			redirect_to users_path #si es true, lo guarda y te lleva al show del proyecto
 		else
 			flash[:alert] = "User hasn't been created!"
-			render 'new' #si es falso, te vuelve a llevar a la vista de projects. Ahora se usa render, porque con el redirect_to, te machaca el proyecto
+			redirect_to '/signup' #si es falso, te vuelve a llevar a la vista de projects. Ahora se usa render, porque con el redirect_to, te machaca el proyecto
 		end
 	end
 

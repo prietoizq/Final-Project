@@ -1,8 +1,13 @@
 class ImagesController < ApplicationController
 
-		def index
+	def index
 		@user = User.find params[:user_id] #el corchete con params tiene que ir junto!!
 		@images = @user.images
+	end
+
+	def show
+		@user = User.find params[:user_id]
+		@image = @user.images.find params[:id]
 	end
 
 	def new

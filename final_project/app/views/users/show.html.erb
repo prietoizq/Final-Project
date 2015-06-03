@@ -11,9 +11,10 @@
 <ul>
 	<% @user.images.each do |image| %>
 		<li>
-			<%= image_tag image.photo.url(:medium) %>
+			<%= image_tag image.photo.url(:thumb) %>
 			<%= image.direction %> 
 			<%= image.description %>
+			<%= link_to(" - Show Image", user_image_path(@user, image)) %>
 			<%= link_to(" - Edit Image", edit_user_image_path(@user, image)) %>
 			<%= link_to(" - Destroy Image", user_image_path(@user, image), method: :delete,
 			data: {confirm: "Are you sure?"}) %>
