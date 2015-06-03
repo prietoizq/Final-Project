@@ -29,6 +29,11 @@ gem "paperclip", "~> 4.2"
 # ESTA GEMA LA USO PARA EL TEMA DEL LOGIN Y AUTENTIFICACION
  gem 'bcrypt', '~> 3.1.7'
 
+#ESTAS GEMAS SE USAN PARA EL TEMA DE PERMISOS
+gem 'rspec', '3.1'
+gem 'rspec-rails', '3.1'
+gem 'rspec-context-private', '0.0.1'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
