@@ -1,0 +1,20 @@
+
+<h1> Photos </h1>
+
+<ul>
+	<% @users.each do |user| %>
+		<% user.images.each do |image| %>
+			<li><%= image_tag image.photo.url(:large) %>
+				<%= image.title %>
+				<%= image.description %>
+				<%= link_to(" - Show Image", user_image_path(user, image), class: 'btn btn-primary') %>
+				<%= link_to("- Show User", user_path(user)) %>
+				<% if current_user && current_user.admin? %>
+					<%= link_to("- Edit", edit_user_path(user)) %>
+					<%= link_to("- Destroy", user_path(user), method: :delete,
+					data: {confirm: "Are you sure?"}) %>
+				<% end %>
+			</li>
+		<% end %>
+	<% end %>
+</ul>

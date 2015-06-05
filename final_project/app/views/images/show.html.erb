@@ -24,7 +24,11 @@
 
 <ul>
 <%= link_to("Back to user", user_path(@user)) %>
-<%= link_to("New image", new_user_image_path(@user)) %>
+<% if current_user && current_user.get_email == @user.email %>
+	<%= link_to("New image", new_user_image_path(@user)) %>
+<% end %>
 </ul>
 
+<br>
+<%= link_to("Photos", photos_path) %>
 

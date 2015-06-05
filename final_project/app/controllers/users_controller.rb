@@ -8,6 +8,10 @@ class UsersController < ApplicationController
 		@users = User.all
 	end
 
+	def photos
+		@users = User.all
+	end
+
 	def show
 		begin
 			@user = User.find params[:id]
