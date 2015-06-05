@@ -1,5 +1,9 @@
 class ImagesController < ApplicationController
 
+	before_action :require_user, only: [:index, :show, :edit, :destroy, :new, :create]
+	#before_action :require_editor, only: [:edit]
+	#before_action :require_admin, only: [:destroy]
+
 	def index
 		@user = User.find params[:user_id] #el corchete con params tiene que ir junto!!
 		@images = @user.images

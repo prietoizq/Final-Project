@@ -11,6 +11,15 @@
 		<%= @image.description %>
 		<%= @image.rating %>
 	</li>
+
+	<% if current_user && current_user.get_email == @user.email %>
+
+		<%= link_to(" - Edit Image", edit_user_image_path(@user, @image)) %>
+		<%= link_to(" - Destroy Image", user_image_path(@user, @image), method: :delete,
+		data: {confirm: "Are you sure?"}) %>
+
+	<% end %>
+
 </ul>
 
 <ul>
