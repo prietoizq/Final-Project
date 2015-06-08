@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+
+  get '/' => 'users#welcome'
   get 'photos' => 'users#photos'
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'

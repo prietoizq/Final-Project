@@ -2,7 +2,7 @@
 	<%= flash[:alert] %>
 <% end %>
 
-<div class="container col-md-4 col-md-offset-4">
+<div class="container col-md-4 col-md-offset-4 new-session">
 
         <h2 class="form-signin-heading">Please sign in</h2>
         <%= form_for(:session, url: login_path) do |f| %> 
@@ -16,4 +16,4 @@
         <%= f.submit "LOG IN", class: "btn btn-primary col-md-12" %>
       <% end %>
 
-    </div> <!-- /container -->
+    </div> 

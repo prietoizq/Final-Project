@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
 
-	before_action :require_user, only: [:index, :show, :edit, :destroy, :new, :create]
+	before_action :require_user, only: [:index, :show, :edit, :destroy]
 	before_action :require_admin, only: [:destroy]
 
+	def welcome
+	end
 
 	def index 
 		@users = User.all

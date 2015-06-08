@@ -10,21 +10,51 @@
 </head>
 <body>
 
-	<% if current_user %> 
-	  <ul> 
-	    <li><%= current_user.email %></li> 
-	    <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
-	  </ul> 
-	<% else %> 
-	  <ul> 
-	    <li><%= link_to "Login", 'login' %></a></li> 
-	    <li><%= link_to "Signup", 'signup' %></a></li> 
-	  </ul> 
-	<% end %>
+	<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to("Home", photos_path, class: "navbar-brand") %>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to("Users", users_path) %></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a></li>
+            <li class="dropdown">
+              <a href="http://getbootstrap.com/examples/navbar-fixed-top/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">View photos<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="">By date</a></li>
+                <li><a href="">By rating</a></li>
+                <li class="divider"></li>
+                <li><a href="">Explore map</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+			<% if current_user %> 
+				<li><%= link_to("Welcome "+current_user.name, user_path(current_user)) %></li>
+			    <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
+			<% else %> 
+			    <li><%= link_to "Login", 'login' %></a></li> 
+			    <li><%= link_to "Signup", 'signup' %></a></li> 
+			<% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+<!-- Esto es para que la barra de navegación no ocupe la parte superior del título -->
+    <br>
+    <br>
+    <br>
 
 <%= yield %>
-
-
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 	  @user = User.find_by_email(params[:session][:email])
 	  if @user && @user.authenticate(params[:session][:password])
 	    session[:user_id] = @user.id
-	    redirect_to '/users'
+	    redirect_to '/photos'
 	  else
 	    redirect_to '/login'
 	    flash[:alert] = "User doesn't exist!"
