@@ -14,3 +14,19 @@
  *= require_self
  */
 
+.welcome-image{
+	margin-top: -100px;
+	width: 100%;
+
+}
+
+.text-welcome{
+
+	margin-bottom: 20%;
+
+}
+
+.item{
+	width: 100%;
+
+}
