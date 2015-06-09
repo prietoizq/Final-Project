@@ -2,20 +2,32 @@
 	<%= flash[:notice] %>
 <% end %>
 
-<h1> SHOW USER </h1>
+	<div class="jumbotron">
+	    <h1><%= @user.name %></h1>
 
-<ul>
-	<li><%= @user.name %> </li>
-	<li><%= @user.email %></li>
-</ul>
-<ul>
-	<% @user.images.each do |image| %>
-		<li>
-			<%= image_tag image.photo.url(:thumb) %>
-			<%= image.direction %> 
-			<%= image.description %>
-			<%= link_to(" - Show Image", user_image_path(@user, image)) %>
+	    <% if current_user.email != @user.email %>
+		    <p class="lead">
+		    	Like an image of this user? You want to ask where he took the photos? Send him a message!
+		    	<br>
+		    	<br>	
+		    	<a class="btn btn-default" href="" role="button">Send a message <span class="glyphicon glyphicon-envelope"></span></a>
+			</p>
+		<% else %>
+			<p class="lead">
+		    	Welcome to your profile, dear <%= @user.name %></p>
+		    <br><br>
+	  	<%= link_to "Add a new image", new_user_image_path(@user), class: "btn btn-lg btn-default col-md-12" %>
+		<%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-lg btn-default col-md-12" %>
+		<% end %>
+	</div>
 
+<div class="container">
+	<% @user.images.each do |image| %>	
+		<div class="container col-md-6 photo-large-container">
+			<div class="row col-md-12 large-image"><%= link_to image_tag(image.photo.url(:large)), user_image_path(@user, image), class: "img-thumbnail"  %></div>
+			<div class="row col-md-12 title"><%= image.title %></div>
+			<div class="row col-md-12"><%= image.direction %></div>
+			<div class="row col-md-12"><%= image.description %></div>
 
 			<% if current_user && current_user.admin? %>
 
@@ -24,18 +36,9 @@
 				data: {confirm: "Are you sure?"}) %>
 
 			<% end %>
-
+		</div>
 		</li>
 	<% end %>
-</ul>
+</div>
 
-<%= link_to("Users", users_path) %>
-
-<% if current_user && current_user.get_email == @user.email %>
-	<%= link_to("New Image", new_user_image_path(@user)) %>
-	<%= link_to("Edit user", edit_user_path(@user)) %>
-<% end %>
-
-<br>
-<%= link_to("Photos", photos_path) %>
 

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 	get 'photos' => 'images#photos'
-  get 'photos/date' => 'images#photos_by_date', as:"date"
+  get 'photos_date' => 'images#photos_by_date', as:"date"
   get '/' => 'users#welcome', as:"welcome"
   get '/about' => 'users#about', as:"about"
   get 'signup' => 'users#new'

@@ -10,7 +10,17 @@
 	</ul>
 <% end %>
 
-<%= render "form" %>
+<div class="container col-md-4 col-md-offset-4 new-session">
 
-<br>
-<%= link_to("Cancel", users_path) %>
+        <h2 class="form-signin-heading">Modify your account</h2>
+        <%= form_for @user do |f| %> 
+        <%= f.text_field :name, :placeholder => "Change your Name", class: "form-control" %>
+        <%= f.email_field :email, :placeholder => "Change your Email", class: "form-control" %>
+        <%= f.password_field :password, :placeholder => "Change Password", class: "form-control"%>
+        
+        <%= f.submit "SAVE", class: "btn btn-primary col-md-12" %>
+        <br>
+        <%= link_to("CANCEL", user_path(@user), class: "btn btn-danger col-md-12") %>
+      <% end %>
+
+</div> 
