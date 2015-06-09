@@ -2,22 +2,34 @@
 	<%= flash[:notice] %>
 <% end %>
 
-<h1> Users </h1>
+<div class="jumbotron">
+    <h1>Users list</h1>
+    <p class="lead">Lorem fistrum llevame al sircoo va usté muy cargadoo caballo blanco caballo negroorl por la gloria de mi madre pecador fistro de la pradera por la gloria de mi madre amatomaa.</p>
+</div>
+
 
 <ul>
 	<% @users.each do |user| %>
-		<li><%= user.name %>
-			<%= user.email %>
-			<%= link_to("- Show", user_path(user)) %>
-			<% if current_user && current_user.admin? %>
-				<%= link_to("- Edit", edit_user_path(user)) %>
-				<%= link_to("- Destroy", user_path(user), method: :delete,
-				data: {confirm: "Are you sure?"}) %>
-			<% end %>
-		</li>
+
+
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<h3 class="panel-title"><%= link_to(user.name, user_path(user)) %></h3>
+				<% if current_user && current_user.admin? %>
+					<%= link_to("- Edit", edit_user_path(user)) %>
+					<%= link_to("- Destroy", user_path(user), method: :delete,
+					data: {confirm: "Are you sure?"}) %>
+				<% end %>			
+			</div>
+
+			<div class="panel-body">
+				<% user.images.each do |image| %>
+						<%= link_to image_tag(image.photo.url(:thumb)), user_image_path(user, image) %>
+				<% end %>
+			</div>
+		</div>
+
 	<% end %>
 </ul>
 
-<br>
-<%= link_to("Photos", photos_path) %>
-
+</div>

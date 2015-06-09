@@ -52,10 +52,17 @@ h1 {
 }
 
 .photo-container{
-
 	text-align: center;
 	margin-top: 5px;
 	margin-bottom: 25px;
 }
 
+.title{
+	font-weight: bold;
+	font-size: 18px;
+}
 
+.panel-success{
+	margin-right: 140px;
+	margin-left: 100px;
+}
