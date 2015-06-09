@@ -51,15 +51,11 @@ h1 {
 	padding-right: 50px;
 }
 
-photo-container{
-	height: 200px;
-	width: 200px;
-	border: solid 1px black;
+.photo-container{
+
 	text-align: center;
-
+	margin-top: 5px;
+	margin-bottom: 25px;
 }
 
-.photo{
-	height: 400px;
-	width: 400px;
-}
+

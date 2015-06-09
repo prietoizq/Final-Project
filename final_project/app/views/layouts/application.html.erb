@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>FinalProject</title>
-  
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
@@ -33,9 +33,9 @@
             <li><%= link_to("About", about_path) %></li>
             <li><a href="">Contact</a></li>
             <li class="dropdown">
-              <a href="http://getbootstrap.com/examples/navbar-fixed-top/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">View photos<span class="caret"></span></a>
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">View photos<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="">By date</a></li>
+                <li><%= link_to("By date", date_path) %></li>
                 <li><a href="">By rating</a></li>
                 <li class="divider"></li>
                 <li><a href="">Explore map</a></li>
