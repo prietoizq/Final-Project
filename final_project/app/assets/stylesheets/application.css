@@ -13,6 +13,13 @@
  *= require_tree .
  *= require_self
  */
+body{ 
+    background: url(/assets/cream_dust.png) repeat 0 0;
+}
+
+h1 { 
+    text-shadow: 1px 1px 1px #ccc;
+}
 
 .welcome-image{
 	margin-top: -100px;
@@ -29,4 +36,30 @@
 .item{
 	width: 100%;
 
+}
+
+.container{
+	text-align: center;
+}
+
+.jumbotron{
+	text-align: center;
+}
+
+.lead{
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+photo-container{
+	height: 200px;
+	width: 200px;
+	border: solid 1px black;
+	text-align: center;
+
+}
+
+.photo{
+	height: 400px;
+	width: 400px;
 }

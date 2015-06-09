@@ -6,11 +6,10 @@ class UsersController < ApplicationController
 	def welcome
 	end
 
-	def index 
-		@users = User.all
+	def about
 	end
 
-	def photos
+	def index 
 		@users = User.all
 	end
 

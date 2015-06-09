@@ -2,6 +2,19 @@
 <h1> Photos </h1>
 
 <ul>
+	<% @images.each do |image| %>
+			<li>
+				<%= image.title %>
+				<%= image.description %>
+
+			</li>
+	<% end %>
+</ul>
+
+
+
+<!--
+<ul>
 	<% @users.each do |user| %>
 		<% user.images.each do |image| %>
 			<li><%= image_tag image.photo.url(:large) %>
@@ -18,3 +31,4 @@
 		<% end %>
 	<% end %>
 </ul>
+-->

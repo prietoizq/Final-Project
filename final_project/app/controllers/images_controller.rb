@@ -9,6 +9,10 @@ class ImagesController < ApplicationController
 		@images = @user.images
 	end
 
+	def photos
+		@images = Image.all
+	end
+
 	def show
 		@user = User.find params[:user_id]
 		@image = @user.images.find params[:id]
