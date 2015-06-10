@@ -1,7 +1,11 @@
 <% if flash[:alert] %>
-  <br><br><br>
-	<%= flash[:alert] %>
+  <br>
+<div class="alert alert-danger" role="alert">
+        <strong>Oh NO! </strong><%= flash[:alert] %>
+</div>
 <% end %>
+
+
 
 <div class="container col-md-4 col-md-offset-4 new-session">
 

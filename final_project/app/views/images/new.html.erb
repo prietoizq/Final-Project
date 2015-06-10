@@ -1,5 +1,7 @@
 <% if flash[:alert] %>
-	<%= flash[:alert] %>
+  <div class="alert alert-warning" role="alert">
+        <strong>Oh NO! </strong><%= flash[:alert] %>
+  </div>
 <% end %>
 
 <% if @image.errors.any? %>

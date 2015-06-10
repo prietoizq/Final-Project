@@ -1,34 +1,25 @@
 <% if flash[:notice] %>
-	<%= flash[:notice] %>
+	<div class="alert alert-warning" role="alert">
+        <strong>Oh NO! </strong><%= flash[:alert] %>
+	</div>
 <% end %>
 
-<h1>SHOW IMAGE FROM USER: <%= @user.name %></h1>
-<ul>
-	<li>
-		<%= @image.title %> 
-		<%= image_tag @image.photo.url(:original) %>
-		<%= @image.direction %> 
-		<%= @image.description %>
-		<%= @image.rating %>
-	</li>
+<div class="well">
+        <%= link_to "Back to "+@user.name, user_path(@user), class: "btn btn-lg btn-warning" %>
+        <% if current_user && current_user.get_email == @user.email %>
 
-	<% if current_user && current_user.get_email == @user.email %>
+        	<%= link_to "New image", new_user_image_path(@user), class: "btn btn-lg btn-success" %>
+        	<%= link_to "Edit image", edit_user_image_path(@user, @image), class: "btn btn-lg btn-info" %>
+        	<%= link_to "Destroy image", user_image_path(@user, @image), method: :delete,
+		data: {confirm: "Are you sure?"}, class: "btn btn-lg btn-danger" %>
+        <% end %>
+</div>
 
-		<%= link_to(" - Edit Image", edit_user_image_path(@user, @image)) %>
-		<%= link_to(" - Destroy Image", user_image_path(@user, @image), method: :delete,
-		data: {confirm: "Are you sure?"}) %>
-
-	<% end %>
-
-</ul>
-
-<ul>
-<%= link_to("Back to user", user_path(@user)) %>
-<% if current_user && current_user.get_email == @user.email %>
-	<%= link_to("New image", new_user_image_path(@user)) %>
-<% end %>
-</ul>
-
-<br>
-<%= link_to("Photos", photos_path) %>
+<div class="container col-md-12">
+		<h1 class="row"><%= @image.title %></h1>
+		<div class="row"><%= image_tag @image.photo.url(:original) %></div>
+		<div class="row"><%= @image.direction %></div> 
+		<div class="row"><%= @image.description %></div>
+		<div class="row"><%= @image.rating %></div>
+</div>
 
