@@ -18,7 +18,7 @@
 <div class="container col-md-12">
 		<h1 class="row"><%= @image.title %></h1>
 		<div class="row"><%= image_tag @image.photo.url(:original), class: "photo-original img-thumbnail" %></div>
-		<div class="row"><%= @image.direction %></div> 
+		<div class="row direction"><%= @image.direction %></div> 
 		<div class="row"><%= @image.description %></div>
 		<div class="row"><%= @image.rating %></div>
 </div>

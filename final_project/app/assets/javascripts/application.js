@@ -15,37 +15,61 @@
 
 //= require_tree .
 
+//a partir de aquí, es para convertir la DIRECCIÓN en una longitud y latitud, y mostrarlas en el mapa
+geocoder = new google.maps.Geocoder();
+
+function getCoordinates(address, callback){
+    var coordinates;
+    geocoder.geocode({address: address}, function(results, status){
+        coords_obj = results[0].geometry.location;
+        coordinates = [coords_obj.A,coords_obj.F];
+        callback(coordinates);
+    });
+};
+
+google.maps.visualRefresh = true;
+var map;
+
 function initialize() {
 
-    var mapOptions = {
-      center: { lat: -34.397, lng: 150.644},
-      zoom: 10,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-    };
-    var map = new google.maps.Map(document.getElementById('mapa_div'), mapOptions);
+    var direction = $('.direction').text();
 
-    var pos = new google.maps.LatLng(-34.397, 150.644);
-     
-    var marker = new google.maps.Marker({
-          position: pos,
-          map: map,
-          draggable: true,
-          title:"Esto es un marcador",
-          animation: google.maps.Animation.DROP
-      });
+    getCoordinates(direction, function(coords){
+        var mapOptions = {
+            zoom: 14,
+            center: {lat: coords[0], lng: coords[1]},
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+        };
 
-    google.maps.event.addListener(marker, 'click', funcionClick);
+        var pos = new google.maps.LatLng(coords[0], coords[1]);
 
-    function funcionClick() {
-        if (marker.getAnimation() != null) {
-          marker.setAnimation(null);
-        } else {
-          marker.setAnimation(google.maps.Animation.BOUNCE);
+        map = new google.maps.Map(document.getElementById('mapa_div'), mapOptions);
+         
+        var marker = new google.maps.Marker({
+              position: pos,
+              map: map,
+              title:"Esto es un marcador",
+              animation: google.maps.Animation.DROP
+        });
+
+        function createInfoWindow(text){
+          var infowindow = new google.maps.InfoWindow({
+            content: text
+          });
+          return infowindow;
         }
-    }
+
+        var info = createInfoWindow("YOU ARE HERE");
+        google.maps.event.addListener(marker, 'click', function(){
+            info.open(map,marker);
+        });
+        });
 };
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+    //hasta aquí, es para convertir la DIRECCIÓN en una longitud y latitud, y mostrarlas en el mapa
+
 
 jQuery(function ($) {
     $('.panel-heading span.clickable').on("click", function (e) {

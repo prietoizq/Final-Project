@@ -123,4 +123,11 @@ footer{
 	text-align: center;
 	margin-bottom: 20px;
 	margin-top: 20px;
+
+	border-radius: 16px 16px;
+	border-color: #fff;
+	border-style: solid;
+	box-shadow: 2px 2px 10px #B1B1B1;
+
+	border-width: 7px;
 }
