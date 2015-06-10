@@ -15,6 +15,38 @@
 
 //= require_tree .
 
+function initialize() {
+
+    var mapOptions = {
+      center: { lat: -34.397, lng: 150.644},
+      zoom: 10,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+    };
+    var map = new google.maps.Map(document.getElementById('mapa_div'), mapOptions);
+
+    var pos = new google.maps.LatLng(-34.397, 150.644);
+     
+    var marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+          draggable: true,
+          title:"Esto es un marcador",
+          animation: google.maps.Animation.DROP
+      });
+
+    google.maps.event.addListener(marker, 'click', funcionClick);
+
+    function funcionClick() {
+        if (marker.getAnimation() != null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+};
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
 jQuery(function ($) {
     $('.panel-heading span.clickable').on("click", function (e) {
         if ($(this).hasClass('panel-collapsed')) {
@@ -31,3 +63,4 @@ jQuery(function ($) {
         }
     });
 });
+
