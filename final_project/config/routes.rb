@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'map' => 'images#map', as:"map"
 	get 'photos' => 'images#photos'
   get 'photos_date' => 'images#photos_by_date', as:"date"
   get '/' => 'users#welcome', as:"welcome"

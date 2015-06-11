@@ -9,6 +9,10 @@ class ImagesController < ApplicationController
 		@images = @user.images
 	end
 
+	def map
+		@images = Image.all
+	end
+
 	def photos
 		@images = Image.all
 	end
@@ -33,7 +37,7 @@ class ImagesController < ApplicationController
 
 		if @image.save
 			flash[:notice] = "Photo created successfully"
-			redirect_to user_path(@user) #le pasamos el @project para que tenga una forma de ver el parámetro project_id sobre el que tiene que coger las entries
+			redirect_to user_image_path(@user, @image) #le pasamos el @project para que tenga una forma de ver el parámetro project_id sobre el que tiene que coger las entries
 		else
 			flash[:alert] = "Photo hasn't been created!"
 			render 'new'
@@ -51,7 +55,7 @@ class ImagesController < ApplicationController
 
 		if @image.update image_params
 			flash[:notice] = "Image updated successfully"
-			redirect_to user_path(@user)
+			redirect_to user_image_path(@user, @image)
 		else
 			flash.now[:errors] = @image.errors.full_messages #flash.now es para que el render no se lo coma y así poder usar el flash con el render
 			render 'edit'
@@ -67,7 +71,7 @@ class ImagesController < ApplicationController
 
 	private
 	def image_params
-		params.require(:image).permit(:title, :direction, :description, :rating, :photo)
+		params.require(:image).permit(:title, :direction, :description, :rating, :photo, :address, :latitude, :longitude)
 	end
 
 end

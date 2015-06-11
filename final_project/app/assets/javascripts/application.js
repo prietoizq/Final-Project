@@ -15,7 +15,9 @@
 
 //= require_tree .
 
+
 //a partir de aquí, es para convertir la DIRECCIÓN en una longitud y latitud, y mostrarlas en el mapa
+
 geocoder = new google.maps.Geocoder();
 
 function getCoordinates(address, callback){
@@ -30,7 +32,7 @@ function getCoordinates(address, callback){
 google.maps.visualRefresh = true;
 var map;
 
-function initialize() {
+function initialize() {   
 
     var direction = $('.direction').text();
 
@@ -59,7 +61,9 @@ function initialize() {
           return infowindow;
         }
 
-        var info = createInfoWindow("YOU ARE HERE");
+        var title = $('.title').text();
+
+        var info = createInfoWindow(title);
         google.maps.event.addListener(marker, 'click', function(){
             info.open(map,marker);
         });
