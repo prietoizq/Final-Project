@@ -11,6 +11,16 @@ class ImagesController < ApplicationController
 
 	def map
 		@images = Image.all
+
+		@hash = Gmaps4rails.build_markers(@images) do |image, marker|
+	 		marker.lat image.latitude
+	 		marker.lng image.longitude
+	 		marker.json({:id => image.id })
+	 		image_link = view_context.link_to image.title,  user_image_path(image.user_id, image)
+	 		marker.infowindow image_link
+	 	end
+
+ 		
 	end
 
 	def photos

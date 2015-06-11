@@ -1,17 +1,32 @@
+
+
  <div class="jumbotron">
     <h1>Map</h1>
     <p class="lead">Lorem fistrum llevame al sircoo va usté muy cargadoo caballo blanco caballo negroorl por la gloria de mi madre pecador fistro de la pradera por la gloria de mi madre amatomaa. Benemeritaar de la pradera fistro ahorarr ahorarr va usté muy cargadoo te va a hasé pupitaa. Está la cosa muy malar ese hombree amatomaa diodenoo ese que llega apetecan no puedor te va a hasé pupitaa se calle ustée la caidita.</p>
 </div>
 
-
-<div class="row">
-
-	<% @images.each do |image| %>
-			
-			<div class="title<%= image.id %>"><%= image.title %></div>
-			<div class="direction<%= image.id %>"><%= image.direction %></div>
-
-	<% end %>
+<div id="mapa_div" class="col-md-8 col-md-offset-1">
+  <div id="map" style='width: 100%; height: 100%;'></div>
 </div>
 
-<div class="col-md-8 col-md-offset-1" id="mapa_div"></div>
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({
+    provider: {
+      zoom : 14,
+      mapTypeId : google.maps.MapTypeId.ROADMAP,
+      // pass in other Google Maps API options here
+    },
+    internal: {
+      id: 'map'
+    }
+  },
+  function(){
+  	markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  }
+);
+
+</script>
