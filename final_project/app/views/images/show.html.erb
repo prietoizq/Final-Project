@@ -15,9 +15,9 @@
         <% end %>
 </div>
 
-<div class="container col-md-12">
+<div class="container col-md-6">
 		<h1 class="row title"><%= @image.title %></h1>
-		<div class="row"><%= image_tag @image.photo.url(:original), class: "photo-original img-thumbnail" %></div>
+		<div class="row"><%= image_tag @image.photo.url(:large), class: "photo-original img-thumbnail" %></div>
 		<div class="row direction"><%= @image.direction %></div>
 		<div class="row"><%= @image.address %></div>
 		<div class="row"><%= @image.latitude %></div>
@@ -26,5 +26,30 @@
 		<div class="row"><%= @image.rating %></div>
 </div>
 
-<div class="col-md-8 col-md-offset-1" id="mapa_div"></div>
+<div id="mapa_div" class="col-md-6">
+  <div id="map" style='width: 100%; height: 100%;'></div>
+</div>
+
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({
+    provider: {
+      zoom : 10,
+      mapTypeId : google.maps.MapTypeId.ROADMAP,
+    },
+    internal: {
+      id: 'map'
+    }
+  },
+  function(){
+  	markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(14);
+  }
+);
+
+</script>
+
 

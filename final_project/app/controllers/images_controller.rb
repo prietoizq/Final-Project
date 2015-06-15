@@ -34,6 +34,12 @@ class ImagesController < ApplicationController
 	def show
 		@user = User.find params[:user_id]
 		@image = @user.images.find params[:id]
+
+		@hash = Gmaps4rails.build_markers(@image) do |image, marker|
+	 		marker.lat image.latitude
+	 		marker.lng image.longitude
+	 		marker.json({:id => image.id })
+	 	end		
 	end
 
 	def new
