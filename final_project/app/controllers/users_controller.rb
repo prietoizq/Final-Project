@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 	before_action :require_admin, only: [:destroy]
 
 	def welcome
+		@layout_welcome = false
+		#this is because don't want to show the footer in the welcome page
 	end
 
 	def about

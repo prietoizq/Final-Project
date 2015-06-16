@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
- 
+
+
+
 html{
 	height: 100%;
 }
@@ -34,18 +36,44 @@ footer{
 	margin-top: 20px;
 }
 
+.carousel-inner{
+  width:100%;
+  max-height: 645px !important;
+}
+
 .welcome-image{
 	margin-top: -100px;
 	width: 100%;
+}
 
+img {
+display: inline-block;
+height: auto;
+max-width: 100%;
 }
 
 .text-welcome{
 	margin-bottom: 20%;
 }
 
-.item{
-	width: 100%;
+/*screen-xs*/
+@media (max-width: 768px) { 
+  .text-welcome{margin-bottom: 0px;}
+  .text-welcome > h1{font-size: 20px;}
+}
+/*screen-sm*/
+@media (min-width: 768px) and (max-width: 992px) { 
+  .text-welcome{margin-bottom: 8%;}
+  .text-welcome > h1{font-size: 30px;}
+  .text-welcome > p{font-size: 14px;}
+}
+/*screen-md*/
+@media (min-width: 992px) and (max-width: 1200px) { 
+  .text-welcome{margin-bottom: 15%;}
+}
+/*screen-lg corresponds with col-lg*/
+@media (min-width: 1200px) {  
+  .text-welcome{margin-bottom: 20%;}
 }
 
 .container{
@@ -119,7 +147,21 @@ footer{
 
 #mapa_div{
 	height: 80%;
-	width: 42%;
+	width: 85%;
+	text-align: center;
+	margin-bottom: 20px;
+	margin-top: 20px;
+
+	border-radius: 16px 16px;
+	border-color: #fff;
+	border-style: solid;
+	box-shadow: 2px 2px 10px #B1B1B1;
+	border-width: 7px;
+}
+
+.mapa_single{
+	height: 80%;
+	width: 40em;
 	text-align: center;
 	margin-bottom: 20px;
 	margin-top: 20px;
