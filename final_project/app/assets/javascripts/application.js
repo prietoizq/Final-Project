@@ -37,4 +37,37 @@ jQuery(function ($) {
 });
 
 
+//FUNCION PARA FILTRAR LAS FOTOS CON AJAX
+$(document).ready(function(){
+
+    $('#search-button').on("click", function(){
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:3000/photos",
+            data: "",
+            success: function(response){populate_page(response)},
+            error: function(){alert("Success: false");},
+            dataType: "json",
+        });
+    });
+
+    function populate_page(items){
+        $('.photo-container').addClass( "old-photo" );
+        total_length = items.length;
+
+        for(var i=0; i<total_length; i++){
+            if(items[i].direction=='direction'){
+                $.ajax({
+                    url: "/images/search",
+                    data: {item: items[i].id},
+                    success: function(response){$('.photo-list').append(response)},
+                    error: function(){console.log("Error")},
+                    dataType: "html",
+                })
+            };       
+        };
+        $('.old-photo').empty(); //con esto vaciamos el interior de la lista y nos quedamos con el UL
+    };
+});
+
 

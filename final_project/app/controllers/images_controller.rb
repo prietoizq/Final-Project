@@ -18,13 +18,16 @@ class ImagesController < ApplicationController
 	 		marker.json({:id => image.id })
 	 		image_link = view_context.link_to image.title,  user_image_path(image.user_id, image)
 	 		marker.infowindow image_link
-	 	end
-
- 		
+	 	end 		
 	end
 
 	def photos
 		@images = Image.all
+
+		respond_to do |format|
+			format.html #{ render index: @comments } ESTO EN ESTE CASO PUEDE OMITIRSE
+    	format.json { render json: @images }
+		end
 	end
 
 	def photos_by_date
@@ -40,6 +43,12 @@ class ImagesController < ApplicationController
 	 		marker.lng image.longitude
 	 		marker.json({:id => image.id })
 	 	end		
+	end
+
+	def get_search
+		image_id = params[:item]
+		@image = Image.find image_id
+		render 'search', layout: false
 	end
 
 	def new

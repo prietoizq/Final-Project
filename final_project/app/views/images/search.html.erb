@@ -1,0 +1,13 @@
+
+<div class="photo-container container col-md-4">
+	<div class="row"> 
+		<%= link_to image_tag(@image.photo.url(:medium)), user_image_path(@image.user_id, @image), class: "img-thumbnail" %>
+	</div>
+	<div class="row title">
+		<%= @image.title %>
+	</div>
+	<div class="row">
+		<% user = User.find(@image.user_id) %>
+		Uploaded by <%= link_to(user.name, user_path(@image.user_id)) %>
+	</div>
+</div>
