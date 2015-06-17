@@ -36,7 +36,6 @@ jQuery(function ($) {
     });
 });
 
-
 //FUNCION PARA FILTRAR LAS FOTOS CON AJAX
 $(document).ready(function(){
 
@@ -66,7 +65,9 @@ $(document).ready(function(){
                 })
             };       
         };
-        $('.old-photo').empty(); //con esto vaciamos el interior de la lista y nos quedamos con el UL
+        $(".old-photo").hide(3000,"swing",function(){}).delay(3000);
+        $(".old-photo").remove(10000);      
+         //con esto vaciamos el interior de la lista y nos quedamos con el UL
     };
 });
 
