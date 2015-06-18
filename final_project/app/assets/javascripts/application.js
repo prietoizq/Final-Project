@@ -36,8 +36,11 @@ jQuery(function ($) {
     });
 });
 
-//FUNCION PARA FILTRAR LAS FOTOS CON AJAX
+
+
 $(document).ready(function(){
+
+//FUNCION PARA FILTRAR LAS FOTOS CON AJAX
 
     $('#search-button').on("click", function(){
         $.ajax({
@@ -51,11 +54,16 @@ $(document).ready(function(){
     });
 
     function populate_page(items){
-        $('.photo-container').addClass( "old-photo" );
-        total_length = items.length;
 
+        //Segun la seleccion del usuario, la variable choice adquiere un texto
+        var $choice = $('p.multiSel').text();
+
+        $('.photo-container').addClass( "old-photo" );
+        
+        total_length = items.length;
         for(var i=0; i<total_length; i++){
-            if(items[i].direction=='direction'){
+            //a la hora de seleccionar las fotos, se evalua si el tema de la foto esta contenido en choice
+            if($choice.includes(items[i].direction)){
                 $.ajax({
                     url: "/images/search",
                     data: {item: items[i].id},
@@ -65,10 +73,50 @@ $(document).ready(function(){
                 })
             };       
         };
+
         $(".old-photo").hide(3000,"swing",function(){}).delay(3000);
         $(".old-photo").remove(10000);      
-         //con esto vaciamos el interior de la lista y nos quedamos con el UL
+         //con esto vaciamos el interior de la lista y nos quedamos solo con las nuevas fotos
     };
+
+
+//FUNCION PARA EL BOTON DESPLEGABLE DE FILTROS
+    $(".dropdown dt a").on('click', function () {
+          $(".dropdown dd ul").slideToggle('fast');
+      });
+
+      $(".dropdown dd ul li a").on('click', function () {
+          $(".dropdown dd ul").hide();
+      });
+
+      function getSelectedValue(id) {
+           return $("#" + id).find("dt a span.value").html();
+      }
+
+      $(document).bind('click', function (e) {
+          var $clicked = $(e.target);
+          if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+    });
+
+
+    $('.multiselect input[type="checkbox"]').on('click', function () {
+        
+          var title = $(this).closest('.multiselect').find('input[type="checkbox"]').val(),
+              title = $(this).val() + ",";
+        
+          if ($(this).is(':checked')) {
+              var html = '<span title="' + title + '">' + title + '</span>';
+              $('.multiSel').append(html);
+              $(".hida").hide();
+          } 
+          else {
+              $('span[title="' + title + '"]').remove();
+              var ret = $(".hida");
+              $('.dropdown dt a').append(ret);        
+          }
+    });
+
+
 });
 
 
