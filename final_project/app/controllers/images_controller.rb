@@ -30,10 +30,6 @@ class ImagesController < ApplicationController
 		end
 	end
 
-	def photos_by_date
-		@images = Image.all
-	end
-
 	def show
 		@user = User.find params[:user_id]
 		@image = @user.images.find params[:id]
