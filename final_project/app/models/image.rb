@@ -1,5 +1,8 @@
 class Image < ActiveRecord::Base
 
+	serialize :users_likes, Array
+	#serialize lo que hace es convertir ese atributo a ese elemento de forma obligada
+
 	geocoded_by :address	
 
 	belongs_to :user

@@ -4,9 +4,10 @@ class CreateImages < ActiveRecord::Migration
 
     	t.integer :user_id
     	t.string :title
-    	t.string :direction
+    	t.string :theme
     	t.text :description
-    	t.float :rating
+    	t.integer :likes
+      t.text :users_likes
 
       t.timestamps null: false
     end
