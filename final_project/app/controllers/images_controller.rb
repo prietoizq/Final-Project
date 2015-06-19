@@ -41,6 +41,25 @@ class ImagesController < ApplicationController
 	 	end		
 	end
 
+	def get_update_map
+		array_ids = params[:item]
+
+		@images = []
+		array_ids.each do |array_id|
+			image = Image.find array_id 
+			@images << image
+		end
+
+		@hash = Gmaps4rails.build_markers(@images) do |image, marker|
+	 		marker.lat image.latitude
+	 		marker.lng image.longitude
+	 		marker.json({:id => image.id })
+	 		image_link = view_context.link_to image.title,  user_image_path(image.user_id, image)
+	 		marker.infowindow image_link
+	 	end 	
+		render 'update_map', layout: false
+	end
+
 	def get_search
 		image_id = params[:item]
 		@image = Image.find image_id

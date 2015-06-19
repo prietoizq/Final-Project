@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   get 'images/search' => 'images#get_search', as:"search"
+  get 'images/update_map' => 'images#get_update_map', as:"update_map"
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   
