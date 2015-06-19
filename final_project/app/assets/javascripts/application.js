@@ -39,7 +39,25 @@ jQuery(function ($) {
 
 $(document).ready(function(){
 
+
+//FUNCION PARA EL BOTON DE FILTROS
+
+    var array_selected = [];
+
+    $("label").on('click', function(){
+        var tag = $(this).children("input").attr("value");
+        var found = array_selected.indexOf(tag);
+        if(found>-1){
+            array_selected.splice(found, 1)}
+        else{
+            array_selected.push(tag);
+        };
+        console.log(array_selected);
+    });
+
+
 //FUNCION PARA FILTRAR LAS FOTOS CON AJAX
+//estas funciones cogen el valor array_selected obtenido en los puntos anteriores
 
     $('#search-button').on("click", function(){
         $.ajax({
@@ -54,15 +72,13 @@ $(document).ready(function(){
 
     function populate_page(items){
 
-        //Segun la seleccion del usuario, la variable choice adquiere un texto
-        var $choice = $('p.multiSel').text();
-
         $('.photo-container').addClass( "old-photo" );
         
         total_length = items.length;
         for(var i=0; i<total_length; i++){
+            var found = $.inArray(items[i].direction, array_selected) > -1;
             //a la hora de seleccionar las fotos, se evalua si el tema de la foto esta contenido en choice
-            if($choice.includes(items[i].direction)){
+            if(found){
                 $.ajax({
                     url: "/images/search",
                     data: {item: items[i].id},
@@ -94,15 +110,14 @@ $(document).ready(function(){
 
     function populate_map(items){
 
-        //Segun la seleccion del usuario, la variable choice adquiere un texto
-        var $choice = $('p.multiSel').text();
-        
         var total_length = items.length;
         var array_ids = [];
 
         for(var i=0; i<total_length; i++){
-            if($choice.includes(items[i].direction)){
-                array_ids.push(items[i].id);
+            var found = $.inArray(items[i].direction, array_selected) > -1;
+            //a la hora de seleccionar las fotos, se evalua si el tema de la foto esta contenido en choice
+            if(found){
+                array_ids.push(items[i].id)
             }; 
         };
 
@@ -116,44 +131,6 @@ $(document).ready(function(){
             dataType: "html",
         })     
     };
-
-
-//FUNCION PARA EL BOTON DESPLEGABLE DE FILTROS
-    $(".dropdown dt a").on('click', function () {
-          $(".dropdown dd ul").slideToggle('fast');
-      });
-
-      $(".dropdown dd ul li a").on('click', function () {
-          $(".dropdown dd ul").hide();
-      });
-
-      function getSelectedValue(id) {
-           return $("#" + id).find("dt a span.value").html();
-      }
-
-      $(document).bind('click', function (e) {
-          var $clicked = $(e.target);
-          if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
-    });
-
-
-    $('.multiselect input[type="checkbox"]').on('click', function () {
-        
-          var title = $(this).closest('.multiselect').find('input[type="checkbox"]').val(),
-              title = $(this).val() + ",";
-        
-          if ($(this).is(':checked')) {
-              var html = '<span title="' + title + '">' + title + '</span>';
-              $('.multiSel').append(html);
-              $(".hida").hide();
-          } 
-          else {
-              $('span[title="' + title + '"]').remove();
-              var ret = $(".hida");
-              $('.dropdown dt a').append(ret);        
-          }
-    });
-
 
 });
 
