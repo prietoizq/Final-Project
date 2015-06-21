@@ -18,12 +18,10 @@
 <div class="container col-md-6">
 		<h1 class="row title"><%= @image.title %></h1>
 		<div class="row"><%= image_tag @image.photo.url(:large), class: "photo-original img-thumbnail" %></div>
-		<div class="row direction"><%= @image.direction %></div>
+		<div class="row">Category: <%= @image.theme %></div>
 		<div class="row"><%= @image.address %></div>
-		<div class="row"><%= @image.latitude %></div>
-		<div class="row"><%= @image.longitude %></div>
 		<div class="row"><%= @image.description %></div>
-		<div class="row"><%= @image.rating %></div>
+		<div class="row"><%= @image.likes %></div>
 </div>
 
 <div class="mapa_single container col-sm-12 col-md-6">

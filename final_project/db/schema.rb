@@ -16,11 +16,12 @@ ActiveRecord::Schema.define(version: 20150611093846) do
   create_table "images", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.string   "direction"
+    t.string   "theme"
     t.text     "description"
-    t.float    "rating"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "likes",              default: 0
+    t.text     "users_likes"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"

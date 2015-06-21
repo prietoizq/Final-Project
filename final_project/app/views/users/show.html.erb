@@ -18,6 +18,9 @@
 		<% else %>
 			<p class="lead">
 		    	Welcome to your profile, dear <%= @user.name %></p>
+		    	<% if @user.images[0]===nil %>
+		    		<h2>You don't have any images yet, upload one now!</h2>
+		    	<% end %>
 		    <br><br>
 	  	<%= link_to "Add a new image", new_user_image_path(@user), class: "btn btn-lg btn-default col-md-12" %>
 		<%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-lg btn-default col-md-12" %>
@@ -29,7 +32,7 @@
 		<div class="container col-md-6 photo-large-container">
 			<div class="row col-md-12"><%= link_to image_tag(image.photo.url(:large)), user_image_path(@user, image), class: "img-thumbnail"  %></div>
 			<div class="row col-md-12 title"><%= image.title %></div>
-			<div class="row col-md-12"><%= image.direction %></div>
+			<div class="row col-md-12"><%= image.address %></div>
 			<div class="row col-md-12"><%= image.description %></div>
 
 			<% if current_user && current_user.admin? %>

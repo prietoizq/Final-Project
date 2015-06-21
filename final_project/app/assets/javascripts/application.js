@@ -76,13 +76,13 @@ $(document).ready(function(){
         
         total_length = items.length;
         for(var i=0; i<total_length; i++){
-            var found = $.inArray(items[i].direction, array_selected) > -1;
+            var found = $.inArray(items[i].theme, array_selected) > -1;
             //a la hora de seleccionar las fotos, se evalua si el tema de la foto esta contenido en choice
             if(found){
                 $.ajax({
                     url: "/images/search",
                     data: {item: items[i].id},
-                    success: function(response){$('.photo-list').append(response)},
+                    success: function(response){$('.photo-list').append(response).fadeIn('slow')},
                     error: function(){console.log("Error")},
                     dataType: "html",
                 })
@@ -90,7 +90,8 @@ $(document).ready(function(){
         };
 
         $(".old-photo").hide(3000,"swing",function(){}).delay(3000);
-        $(".old-photo").remove(10000);      
+        $(".old-photo").remove(3000);
+    
          //con esto vaciamos el interior de la lista y nos quedamos solo con las nuevas fotos
     };
 
@@ -114,7 +115,7 @@ $(document).ready(function(){
         var array_ids = [];
 
         for(var i=0; i<total_length; i++){
-            var found = $.inArray(items[i].direction, array_selected) > -1;
+            var found = $.inArray(items[i].theme, array_selected) > -1;
             //a la hora de seleccionar las fotos, se evalua si el tema de la foto esta contenido en choice
             if(found){
                 array_ids.push(items[i].id)

@@ -76,7 +76,7 @@ class ImagesController < ApplicationController
 		@image = @user.images.new image_params
 
 		if @image.save
-			flash[:notice] = "Photo created successfully"
+			flash[:notice] = "Image uploaded successfully"
 			redirect_to user_image_path(@user, @image) #le pasamos el @project para que tenga una forma de ver el parámetro project_id sobre el que tiene que coger las entries
 		else
 			flash[:alert] = "Photo hasn't been created!"
@@ -111,7 +111,7 @@ class ImagesController < ApplicationController
 
 	private
 	def image_params
-		params.require(:image).permit(:title, :direction, :description, :rating, :photo, :address, :latitude, :longitude)
+		params.require(:image).permit(:title, :theme, :description, :likes, :users_likes, :photo, :address, :latitude, :longitude)
 	end
 
 end

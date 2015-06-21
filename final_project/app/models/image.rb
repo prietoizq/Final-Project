@@ -1,5 +1,11 @@
 class Image < ActiveRecord::Base
 
+	validates :title, presence: true 
+	validates :address, presence: true
+	validates :description, presence: true 
+	validates :theme, presence: true 
+
+
 	serialize :users_likes, Array
 	#serialize lo que hace es convertir ese atributo a ese elemento de forma obligada
 

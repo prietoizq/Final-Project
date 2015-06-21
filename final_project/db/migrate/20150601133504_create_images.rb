@@ -6,7 +6,7 @@ class CreateImages < ActiveRecord::Migration
     	t.string :title
     	t.string :theme
     	t.text :description
-    	t.integer :likes
+    	t.integer :likes, default: 0
       t.text :users_likes
 
       t.timestamps null: false
