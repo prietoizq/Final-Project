@@ -17,4 +17,5 @@ class Image < ActiveRecord::Base
 	validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
 	after_validation :geocode
+
 end

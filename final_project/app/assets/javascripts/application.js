@@ -56,20 +56,32 @@ $(document).ready(function(){
 
     function increase_like(object){
 
-        var new_url = url_path.concat('/like');
+        var user_welcome = $("#user-name").text();
+        var user_name = user_welcome.substring(8, user_welcome.length);
 
-        $.ajax({
-            type: "GET",
-            url: new_url,
-            data: "",
-            success: function(response){console.log(object)},
-            error: function(){alert("Success: false2");},
-            dataType: "json",
-        });
+        console.log(object.users_likes);
 
-        var $number_likes = $(".like").text();
-        $number_likes = parseInt($number_likes) + 1;
-        $(".like").text($number_likes+" ");
+        var found = $.inArray(user_name, object.users_likes) == -1;
+        console.log(found);
+
+        if(found==true){
+            var new_url = url_path.concat('/like');
+
+            $.ajax({
+                type: "GET",
+                url: new_url,
+                data: "",
+                success: function(response){console.log(object)},
+                error: function(){alert("Success: false2");},
+                dataType: "json",
+            });
+
+            var $number_likes = $(".like").text();
+            $number_likes = parseInt($number_likes) + 1;
+            $(".like").text($number_likes+" ");             
+        }else{
+            alert("NO PUEDES VOTAR MAS");
+        };
     };
 
 //FUNCION PARA EL BOTON DE FILTROS

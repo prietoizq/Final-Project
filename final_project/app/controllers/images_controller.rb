@@ -111,10 +111,11 @@ class ImagesController < ApplicationController
 		@user = User.find params[:user_id]
 		@image = @user.images.find params[:id]
 
-	    @image.likes =(@image.likes + 1)
-	    @image.save
-	     
-	    redirect_to user_image_path(@user, @image)  
+		@image.likes =(@image.likes + 1)
+		@image.users_likes << @user.name
+    	@image.save
+
+     	redirect_to user_image_path(@user, @image) 
 	end
 
 	def destroy

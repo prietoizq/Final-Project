@@ -4,7 +4,7 @@
 	</div>
 <% end %>
 
-<div class="well">
+<div class="container well col-md-12">
         <%= link_to "Back to "+@user.name, user_path(@user), class: "btn btn-lg btn-warning" %>
         <% if current_user && current_user.get_email == @user.email %>
 
@@ -21,15 +21,16 @@
 
 		<div class="row"><%= image_tag @image.photo.url(:large), class: "photo-original img-thumbnail" %></div>
 
-    <div class="img-thumbnail col-md-10 col-md-offset-1">
-  		<div class="row"><span class="shadow">Place: </span><%= @image.address %></div>
-  		<div class="row"><span class="shadow">What has to tell the uploader: </span><%= @image.description %></div>
+    <div class="img-thumbnail image-text col-md-10 col-md-offset-1">
+  		<div class="row col-md-10 col-md-offset-1"><span class="shadow">Place: </span><%= @image.address %></div>
+  		<div class="row col-md-10 col-md-offset-1"><span class="shadow">What has to tell the uploader: </span><%= @image.description %></div>
+
       <center>
-
-        <div class="btn-primary btn-circle btn-like">
-      <span class="like"><%= @image.likes %> </span><span class="glyphicon glyphicon-thumbs-up"></span></div>
-
-       
+        <div class="row col-md-10 col-md-offset-1">
+          <div class="btn-primary btn-circle btn-like">
+            <span class="like"><%= @image.likes %> </span><span class="glyphicon glyphicon-thumbs-up"></span>
+          </div>
+        </div>
       </center>      
     </div>
 
@@ -37,7 +38,7 @@
 
 </div>
 
-<div class="mapa_single container col-sm-12 col-md-6">
+<div class="mapa_single container col-sm-12 col-md-5">
   <div id="map" style='width: 100%; height: 100%;'></div>
 </div>
 
