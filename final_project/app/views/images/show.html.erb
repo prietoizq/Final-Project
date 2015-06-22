@@ -19,7 +19,8 @@
 
     <h1 class="title"><%= @image.title %></h1>
 
-		<div class="row"><%= image_tag @image.photo.url(:large), class: "photo-original img-thumbnail" %></div>
+    <div class="row">
+    <%= link_to image_tag(@image.photo.url(:large)), original_path(@image.user_id, @image), class: "img-thumbnail photo-original" %></div>
 
     <div class="img-thumbnail image-text col-md-10 col-md-offset-1">
   		<div class="row col-md-10 col-md-offset-1"><span class="shadow">Place: </span><%= @image.address %></div>
@@ -33,9 +34,6 @@
         </div>
       </center>      
     </div>
-
-
-
 </div>
 
 <div class="mapa_single container col-sm-12 col-md-5">

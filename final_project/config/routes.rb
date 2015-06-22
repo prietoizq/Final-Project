@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
 
   get '/users/:user_id/images/:id/like' => 'images#like', as:"like"
+  get '/users/:user_id/images/:id/original' => 'images#original', as:"original"
 
   get 'login' => 'sessions#new'
   get 'images/search' => 'images#get_search', as:"search"

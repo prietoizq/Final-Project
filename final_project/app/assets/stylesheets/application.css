@@ -60,24 +60,24 @@ max-width: 100%;
 @media (max-width: 768px) { 
   .text-welcome{margin-bottom: 0px;}
   .text-welcome > h1{font-size: 20px;}
-  .btn-lg.btn{width: 40%;}
+  .well>.btn-lg.btn{width: 40%;}
 }
 /*screen-sm*/
 @media (min-width: 768px) and (max-width: 992px) { 
   .text-welcome{margin-bottom: 8%;}
   .text-welcome > h1{font-size: 30px;}
   .text-welcome > p{font-size: 14px;}
-  .btn-lg.btn{width: 20%;}
+  .well>.btn-lg.btn{width: 20%;}
 }
 /*screen-md*/
 @media (min-width: 992px) and (max-width: 1200px) { 
   .text-welcome{margin-bottom: 15%;}
-  .btn-lg.btn{width: 15%;}
+  .well>.btn-lg.btn{width: 15%;}
 }
 /*screen-lg corresponds with col-lg*/
 @media (min-width: 1200px) {  
   .text-welcome{margin-bottom: 20%;}
-  .btn-lg.btn{width: 15%;}
+  .well>.btn-lg.btn{width: 15%;}
 }
 
 .container{
@@ -208,9 +208,11 @@ max-width: 100%;
   margin-bottom: 5px;
 }
 
-.btn-lg.btn{
+.well>.btn-lg.btn{
 	margin-left: 5px;
 	text-align: center;
 }
 
-
+.btn-like{
+	cursor: pointer;
+}

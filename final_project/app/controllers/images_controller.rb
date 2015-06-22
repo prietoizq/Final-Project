@@ -118,6 +118,11 @@ class ImagesController < ApplicationController
      	redirect_to user_image_path(@user, @image) 
 	end
 
+	def original
+		@user = User.find params[:user_id]
+		@image = @user.images.find params[:id]
+	end
+
 	def destroy
 		@user = User.find params[:user_id]
 		image = @user.images.find params[:id]
