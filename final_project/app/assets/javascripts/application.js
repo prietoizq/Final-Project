@@ -177,6 +177,25 @@ $(document).ready(function(){
         })     
     };
 
+    //FUNCION PARA CREAR EFECTOS EN LAS IMAGENES ORIGINALES
+
+    $("#gray").on('click', change_class("#gray", "gray", "#image"));
+    $("#saturate").on('click', change_class("#saturate", "saturate", "#image"));    
+    $("#contrast").on('click', change_class("#contrast", "contrast", "#image"));
+    $("#blur").on('click', change_class("#blur", "blur", "#image"));
+    $("#invert").on('click', change_class("#invert", "invert", "#image"));
+    $("#rotate").on('click', change_class("#rotate", "rotate", "#image"));
+
+    function change_class(id_button, class_image, image){
+        $(id_button).on('click', function(){
+            if($(image).hasClass(class_image)){
+                $(image).removeClass(class_image);
+            }else{
+                $(image).addClass(class_image);
+            };
+        });
+    };
+
 });
 
 

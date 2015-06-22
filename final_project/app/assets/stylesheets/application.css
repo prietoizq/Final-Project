@@ -216,3 +216,14 @@ max-width: 100%;
 .btn-like{
 	cursor: pointer;
 }
+
+.panel-effects{
+	margin-top: 20px;
+}
+
+.gray{-webkit-filter: grayscale(100%);}
+.saturate{-webkit-filter: saturate(3);}
+.contrast{-webkit-filter: contrast(160%);}
+.blur{-webkit-filter: blur(3px);}
+.invert{-webkit-filter: invert(100%);}
+.rotate{-webkit-filter: hue-rotate(180deg);}

@@ -10,22 +10,25 @@
 </div>
 
 
-<div class="container col-md-12">
+<div class="container col-md-10 col-md-offset-1">
 
-    <h1 class="title"><%= @image.title %></h1>
+  <h1 class="title"><%= @image.title %></h1>
 
-		<div class="row col-md-12"><%= image_tag @image.photo.url(:original), class: "photo-original img-thumbnail" %></div>
+	<div class="row col-md-12" id="image"><%= image_tag @image.photo.url(:original), class: "img-thumbnail" %></div>
 
-    <div class="img-thumbnail image-text col-md-8 col-md-offset-2">
-  		<div class="row col-md-12"><span class="shadow">Place: </span><%= @image.address %></div>
-  		<div class="row col-md-12"><span class="shadow">What has to tell the uploader: </span><%= @image.description %></div>
-
-      <center>
-        <div class="row col-md-12">
-          <div class="btn-primary btn-circle btn-like">
-            <span class="like"><%= @image.likes %> </span><span class="glyphicon glyphicon-thumbs-up"></span>
+  <div class="container panel-effects col-md-10 col-md-offset-1">
+  	<div class="panel panel-primary">
+          <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-magnet"></i> Want to see that place from a new perspective? Try this!</h3>
           </div>
-        </div>
-      </center>      
-    </div>
+          <div class="panel-body">
+              <div class="btn btn-md btn-hover btn-default" id="gray">Gray</div>
+              <div class="btn btn-md btn-hover btn-primary" id="saturate">Saturate</div>
+              <div class="btn btn-md btn-hover btn-info" id="contrast">Contrast</div>
+              <div class="btn btn-md btn-hover btn-warning" id="blur">Blur</div>
+              <div class="btn btn-md btn-hover btn-danger" id="invert">Invert</div>
+              <div class="btn btn-md btn-hover btn-success" id="rotate">Rotate</div>
+          </div>
+      </div>
+  </div>     
 </div>

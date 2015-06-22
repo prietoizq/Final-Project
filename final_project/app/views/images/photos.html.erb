@@ -47,7 +47,7 @@
 
 <div class="container photo-list">
 
-    <% array = @images.sort { |a,b| b.created_at <=> a.created_at } %>
+    <% array = @images.sort { |a,b| b.likes <=> a.likes } %>
         <% array.each do |image| %>
     			<div class="photo-container container col-xs-12 col-sm-6 col-md-4">
     				<div class="row"> 
