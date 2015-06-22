@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/' => 'users#welcome', as:"welcome"
   get '/about' => 'users#about', as:"about"
   get 'signup' => 'users#new'
+
+  get '/users/:user_id/images/:id/like' => 'images#like', as:"like"
+
   get 'login' => 'sessions#new'
   get 'images/search' => 'images#get_search', as:"search"
   get 'images/update_map' => 'images#get_update_map', as:"update_map"

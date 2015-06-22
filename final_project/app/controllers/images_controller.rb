@@ -38,7 +38,12 @@ class ImagesController < ApplicationController
 	 		marker.lat image.latitude
 	 		marker.lng image.longitude
 	 		marker.json({:id => image.id })
-	 	end		
+	 	end 
+
+	 	respond_to do |format|
+			format.html #{ render index: @comments } ESTO EN ESTE CASO PUEDE OMITIRSE
+    	format.json { render json: @image }
+		end	
 	end
 
 	def get_update_map
@@ -100,6 +105,16 @@ class ImagesController < ApplicationController
 			flash.now[:errors] = @image.errors.full_messages #flash.now es para que el render no se lo coma y así poder usar el flash con el render
 			render 'edit'
 		end
+	end
+
+	def like
+		@user = User.find params[:user_id]
+		@image = @user.images.find params[:id]
+
+	    @image.likes =(@image.likes + 1)
+	    @image.save
+	     
+	    redirect_to user_image_path(@user, @image)  
 	end
 
 	def destroy

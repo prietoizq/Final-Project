@@ -39,6 +39,38 @@ jQuery(function ($) {
 
 $(document).ready(function(){
 
+//FUNCION PARA LIKE
+
+    var url_path = window.location.pathname;
+    
+    $(".btn-like").on("click", function(){
+        $.ajax({
+            url: url_path,
+            data: "",
+            success: function(response){increase_like(response)},
+            error: function(){alert("Success: false");},
+            dataType: "json",
+
+        });
+    });
+
+    function increase_like(object){
+
+        var new_url = url_path.concat('/like');
+
+        $.ajax({
+            type: "GET",
+            url: new_url,
+            data: "",
+            success: function(response){console.log(object)},
+            error: function(){alert("Success: false2");},
+            dataType: "json",
+        });
+
+        var $number_likes = $(".like").text();
+        $number_likes = parseInt($number_likes) + 1;
+        $(".like").text($number_likes+" ");
+    };
 
 //FUNCION PARA EL BOTON DE FILTROS
 

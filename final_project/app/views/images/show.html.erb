@@ -16,12 +16,25 @@
 </div>
 
 <div class="container col-md-6">
-		<h1 class="row title"><%= @image.title %></h1>
+
+    <h1 class="title"><%= @image.title %></h1>
+
 		<div class="row"><%= image_tag @image.photo.url(:large), class: "photo-original img-thumbnail" %></div>
-		<div class="row">Category: <%= @image.theme %></div>
-		<div class="row"><%= @image.address %></div>
-		<div class="row"><%= @image.description %></div>
-		<div class="row"><%= @image.likes %></div>
+
+    <div class="img-thumbnail col-md-10 col-md-offset-1">
+  		<div class="row"><span class="shadow">Place: </span><%= @image.address %></div>
+  		<div class="row"><span class="shadow">What has to tell the uploader: </span><%= @image.description %></div>
+      <center>
+
+        <div class="btn-primary btn-circle btn-like">
+      <span class="like"><%= @image.likes %> </span><span class="glyphicon glyphicon-thumbs-up"></span></div>
+
+       
+      </center>      
+    </div>
+
+
+
 </div>
 
 <div class="mapa_single container col-sm-12 col-md-6">

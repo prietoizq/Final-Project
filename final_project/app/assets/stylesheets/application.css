@@ -141,6 +141,10 @@ max-width: 100%;
 	margin-bottom: 15px;
 }
 
+.photo-large-container:hover{
+	-webkit-filter: sepia(50%);
+}
+
 .large-image{
 	border-radius: 25px;
 }
@@ -164,7 +168,7 @@ max-width: 100%;
 }
 
 .mapa_single{
-	height: 80%;
+	height: 94%;
 	width: 40em;
 	text-align: center;
 	margin-bottom: 20px;
@@ -182,3 +186,21 @@ max-width: 100%;
 	margin-bottom: -7px;
 	text-align: center;
 }
+
+.shadow{
+	text-shadow: 1px  #333;
+	font-weight: bold;
+}
+
+.btn-circle {
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
