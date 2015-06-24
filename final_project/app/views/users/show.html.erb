@@ -28,12 +28,13 @@
 	</div>
 
 <div class="container">
-	<% @user.images.each do |image| %>	
+
+	<% @user.images.each do |image| %>
+		
 		<div class="container col-md-6 photo-large-container">
 			<div class="row col-md-12"><%= link_to image_tag(image.photo.url(:large)), user_image_path(@user, image), class: "img-thumbnail"  %></div>
 			<div class="row col-md-12 title"><%= image.title %></div>
 			<div class="row col-md-12"><%= image.address %></div>
-			<div class="row col-md-12"><%= image.description %></div>
 
 			<% if current_user && current_user.admin? %>
 
@@ -43,8 +44,8 @@
 
 			<% end %>
 		</div>
-		</li>
 	<% end %>
+	
 </div>
 
 

@@ -125,8 +125,8 @@ class ImagesController < ApplicationController
 
 	def destroy
 		@user = User.find params[:user_id]
-		image = @user.images.find params[:id]
-		image.destroy
+		@image = @user.images.find params[:id]
+		@image.destroy
 		redirect_to user_path(@user)
 	end
 

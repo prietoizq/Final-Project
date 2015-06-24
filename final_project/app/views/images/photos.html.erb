@@ -47,21 +47,7 @@
 
 <div class="container photo-list">
 
-    <% array = @images.sort { |a,b| b.likes <=> a.likes } %>
-        <% array.each do |image| %>
-    			<div class="photo-container container col-xs-12 col-sm-6 col-md-4">
-    				<div class="row"> 
-    					<%= link_to image_tag(image.photo.url(:medium)), user_image_path(image.user_id, image), class: "img-thumbnail" %>
-    				</div>
-    				<div class="row title">
-    					<%= image.title %>
-    				</div>
-    				<div class="row">
-    					<% user = User.find(image.user_id) %>
-    					Uploaded by <%= link_to(user.name, user_path(image.user_id)) %>
-    				</div>
-    			</div>
-    	<% end %>
+
 </div>
 
 

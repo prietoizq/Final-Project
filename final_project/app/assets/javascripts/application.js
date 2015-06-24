@@ -50,7 +50,6 @@ $(document).ready(function(){
             success: function(response){increase_like(response)},
             error: function(){alert("Success: false");},
             dataType: "json",
-
         });
     });
 
@@ -99,11 +98,49 @@ $(document).ready(function(){
         console.log(array_selected);
     });
 
+//INICIALIZO LAS VARIABLES USADAS EN LOS SCRIPTS PARA LA VISTA PHOTOS
+    var counter = 0;
+    var i = 0;
+    var started = true;
+    //started es true hasta que se de click al primer boton, tras lo cual ya se filtra.
+    //esto vale para que al principio se muestren TODAS las fotos sin filtro
+
+    if(started){
+        $.ajax({
+                type: "GET",
+                url: "http://localhost:3000/photos",
+                data: "",
+                success: function(response){populate_page(response)},
+                error: function(){alert("Success: false");},
+                dataType: "json",
+        });
+    };
+
+
+
+// FUNCION PARA HACER SCROLL Y RECARGAR ELEMENTOS
+    $(window).scroll(function() {
+       if($(window).scrollTop() + $(window).height() == $(document).height()) {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:3000/photos",
+                data: "",
+                success: function(response){populate_page(response)},
+                error: function(){alert("Success: false");},
+                dataType: "json",
+            });
+        };
+    });
+
 
 //FUNCION PARA FILTRAR LAS FOTOS CON AJAX
 //estas funciones cogen el valor array_selected obtenido en los puntos anteriores
 
     $('#search-button').on("click", function(){
+        i = 0;
+        started = false;
+        $('.photo-container').addClass( "old-photo" );
+
         $.ajax({
             type: "GET",
             url: "http://localhost:3000/photos",
@@ -116,29 +153,31 @@ $(document).ready(function(){
 
     function populate_page(items){
 
-        $('.photo-container').addClass( "old-photo" );
-        
+        counter = 0;        
         total_length = items.length;
-        for(var i=0; i<total_length; i++){
-            var found = $.inArray(items[i].theme, array_selected) > -1;
-            //a la hora de seleccionar las fotos, se evalua si el tema de la foto esta contenido en choice
-            if(found){
-                $.ajax({
-                    url: "/images/search",
-                    data: {item: items[i].id},
-                    success: function(response){$('.photo-list').append(response).fadeIn('slow')},
-                    error: function(){console.log("Error")},
-                    dataType: "html",
-                })
-            };       
-        };
+            while((counter<6)&&(i<total_length)){
+
+                var found = $.inArray(items[i].theme, array_selected) > -1;
+                //a la hora de seleccionar las fotos, se evalua si el tema de la foto esta contenido en choice
+                if(started){found=true};
+                if(found){
+                    counter = counter + 1;
+                    $.ajax({
+                        url: "/images/search",
+                        data: {item: items[i].id},
+                        success: function(response){$('.photo-list').append(response).fadeIn('slow')},
+                        error: function(){console.log("Error")},
+                        dataType: "html",
+                    })
+                };
+                i = i + 1;       
+            };
 
         $(".old-photo").hide(3000,"swing",function(){}).delay(3000);
         $(".old-photo").remove(3000);
     
          //con esto vaciamos el interior de la lista y nos quedamos solo con las nuevas fotos
     };
-
 
 // SCRIPT PARA PODER ESCOGER EN EL MAPA LOS TIPOS DE LUGARES PREFERIDOS
 
