@@ -9,6 +9,7 @@
 	<div class="row">
 		<% user = User.find(@image.user_id) %>
 		Uploaded by <%= link_to(user.name, user_path(@image.user_id)) %>
+		in <%= @image.created_at.day.to_s+"/"+@image.created_at.month.to_s+"/"+@image.created_at.year.to_s %>
 	</div>
 </div>
 

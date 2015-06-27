@@ -14,8 +14,6 @@
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
 
-
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -39,18 +37,10 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
           	<li><%= link_to("Gallery", photos_path) %></li>
+            <li><%= link_to("Map", map_path) %></li>
             <li><%= link_to("Users", users_path) %></li>
-            <li><a href="">About</a></li>
+            <li><a href="">About us</a></li>
             <li><a href="">Contact</a></li>
-            <li class="dropdown">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">View photos<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="">By date</a></li>
-                <li><a href="">By rating</a></li>
-                <li class="divider"></li>
-                <li><%= link_to("Explore map", map_path) %></li>
-              </ul>
-            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
 			<% if current_user %> 

@@ -58,10 +58,7 @@ $(document).ready(function(){
         var user_welcome = $("#user-name").text();
         var user_name = user_welcome.substring(8, user_welcome.length);
 
-        console.log(object.users_likes);
-
         var found = $.inArray(user_name, object.users_likes) == -1;
-        console.log(found);
 
         if(found==true){
             var new_url = url_path.concat('/like');
@@ -70,7 +67,7 @@ $(document).ready(function(){
                 type: "GET",
                 url: new_url,
                 data: "",
-                success: function(response){console.log(object)},
+                success: function(response){},
                 error: function(){alert("Success: false2");},
                 dataType: "json",
             });
@@ -79,8 +76,25 @@ $(document).ready(function(){
             $number_likes = parseInt($number_likes) + 1;
             $(".like").text($number_likes+" ");             
         }else{
-            alert("NO PUEDES VOTAR MAS");
+            create_alert("Sorry, you have already voted!");
         };
+    };
+
+//FUNCION PARA CREAR UNA ALERTA
+
+    function create_alert(message){
+
+        $("body").append(
+            '<div class="alert alert-danger custom-alert" role="alert">'+
+                '<strong>'+message+'</strong>'+
+            '</div>'
+        ).fadeIn('slow');
+
+        $(".custom-alert").delay(3000).fadeOut(2500,"swing",function(){});
+
+        setTimeout(function(){
+            $(".custom-alert:hidden").remove();
+            }, 3500);
     };
 
 //FUNCION PARA EL BOTON DE FILTROS
@@ -95,7 +109,6 @@ $(document).ready(function(){
         else{
             array_selected.push(tag);
         };
-        console.log(array_selected);
     });
 
 //INICIALIZO LAS VARIABLES USADAS EN LOS SCRIPTS PARA LA VISTA PHOTOS
@@ -116,8 +129,6 @@ $(document).ready(function(){
         });
     };
 
-
-
 // FUNCION PARA HACER SCROLL Y RECARGAR ELEMENTOS
     $(window).scroll(function() {
        if($(window).scrollTop() + $(window).height() == $(document).height()) {
@@ -131,7 +142,6 @@ $(document).ready(function(){
             });
         };
     });
-
 
 //FUNCION PARA FILTRAR LAS FOTOS CON AJAX
 //estas funciones cogen el valor array_selected obtenido en los puntos anteriores
@@ -173,8 +183,11 @@ $(document).ready(function(){
                 i = i + 1;       
             };
 
-        $(".old-photo").hide(3000,"swing",function(){}).delay(3000);
-        $(".old-photo").remove(3000);
+        $(".old-photo").hide(3000,"swing",function(){});
+
+        setTimeout(function(){
+            $(".old-photo:hidden").remove();
+        }, 3000);
     
          //con esto vaciamos el interior de la lista y nos quedamos solo con las nuevas fotos
     };
@@ -204,6 +217,8 @@ $(document).ready(function(){
                 array_ids.push(items[i].id)
             }; 
         };
+
+        if(typeof array_ids[0] === 'undefined'){create_alert("There aren't element with this search")};
 
         $('#mapa-space').next().remove();
 

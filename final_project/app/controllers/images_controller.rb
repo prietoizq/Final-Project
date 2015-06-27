@@ -10,22 +10,27 @@ class ImagesController < ApplicationController
 	end
 
 	def map
+		@layout_welcome = false
+		
 		@images = Image.all
 
 		@hash = Gmaps4rails.build_markers(@images) do |image, marker|
 	 		marker.lat image.latitude
 	 		marker.lng image.longitude
 	 		marker.json({:id => image.id })
-	 		image_link = view_context.link_to image.title,  user_image_path(image.user_id, image)
-	 		marker.infowindow image_link
-	 	end 		
+	 		title = view_context.link_to image.title,  user_image_path(image.user_id, image)
+	 		photo = view_context.image_tag(image.photo.url(:thumb))
+	 		marker.infowindow title
+	 	end 
 	end
 
 	def photos
-		@images = Image.all
+		@array_images = Image.all
+		@images_sorted = @array_images.sort_by {|image| image.likes}
+		@images = @images_sorted.reverse
 
 		respond_to do |format|
-			format.html #{ render index: @comments } ESTO EN ESTE CASO PUEDE OMITIRSE
+			format.html #{ render index: @images } ESTO EN ESTE CASO PUEDE OMITIRSE
     	format.json { render json: @images }
 		end
 	end
@@ -112,7 +117,7 @@ class ImagesController < ApplicationController
 		@image = @user.images.find params[:id]
 
 		@image.likes =(@image.likes + 1)
-		@image.users_likes << @user.name
+		@image.users_likes << current_user.name
     	@image.save
 
      	redirect_to user_image_path(@user, @image) 
