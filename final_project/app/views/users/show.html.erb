@@ -11,23 +11,24 @@
 	    <% if current_user.email != @user.email %>
 		    <p class="lead">
 		    	Like an image of this user? You want to ask where he took the photos? Send him a message!
-		    	<br>
-		    	<br>	
+		    	<br><br>	
 		    	<a class="btn btn-default" href="" role="button">Send a message <span class="glyphicon glyphicon-envelope"></span></a>
 			</p>
 		<% else %>
 			<p class="lead">
-		    	Welcome to your profile, dear <%= @user.name %></p>
-		    	<% if @user.images[0]===nil %>
-		    		<h2>You don't have any images yet, upload one now!</h2>
-		    	<% end %>
-		    <br><br>
-	  	<%= link_to "Add a new image", new_user_image_path(@user), class: "btn btn-lg btn-default col-md-12" %>
-		<%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-lg btn-default col-md-12" %>
+		    	Welcome to your profile, dear <%= @user.name %>
+		    	<br><br>
+		    	<%= link_to "Add a new image", new_user_image_path(@user), class: "btn btn-default" %>
+				<%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-default" %>
+		    </p>
 		<% end %>
 	</div>
 
 <div class="container">
+
+    <% if current_user.email == @user.email && @user.images[0]===nil %>
+		<h2>You don't have any images yet, upload one now!</h2>
+	<% end %>
 
 	<% @user.images.each do |image| %>
 		
