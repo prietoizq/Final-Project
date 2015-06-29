@@ -165,6 +165,8 @@ $(document).ready(function(){
 
         counter = 0;        
         total_length = items.length;
+
+        
             while((counter<6)&&(i<total_length)){
 
                 var found = $.inArray(items[i].theme, array_selected) > -1;

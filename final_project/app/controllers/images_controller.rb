@@ -18,7 +18,7 @@ class ImagesController < ApplicationController
 	 		marker.lat image.latitude
 	 		marker.lng image.longitude
 	 		marker.json({:id => image.id })
-	 		title = view_context.link_to image.title,  user_image_path(image.user_id, image)
+	 		title = view_context.link_to image.title, user_image_path(image.user_id, image)
 	 		photo = view_context.image_tag(image.photo.url(:thumb))
 	 		marker.infowindow title
 	 	end 

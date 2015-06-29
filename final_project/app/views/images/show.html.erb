@@ -4,26 +4,31 @@
 	</div>
 <% end %>
 
-<div class="container well col-md-12">
-        <%= link_to "Back to "+@user.name, user_path(@user), class: "btn btn-lg btn-warning" %>
+
+<h1 class="title col-md-11"><%= @image.title %></h1>
+
+<div class="container col-md-6 container-buttoms">
+        <%= link_to "Back", photos_path, class: "btn btn-warning" %>
         <% if current_user && current_user.get_email == @user.email %>
 
-        	<%= link_to "New image", new_user_image_path(@user), class: "btn btn-lg btn-success" %>
-        	<%= link_to "Edit image", edit_user_image_path(@user, @image), class: "btn btn-lg btn-info" %>
-        	<%= link_to "Destroy image", user_image_path(@user, @image), method: :delete,
-		data: {confirm: "Are you sure?"}, class: "btn btn-lg btn-danger" %>
+        	<%= link_to "New", new_user_image_path(@user), class: "btn btn-success" %>
+        	<%= link_to "Edit", edit_user_image_path(@user, @image), class: "btn btn-info" %>
+        	<%= link_to "Destroy", user_image_path(@user, @image), method: :delete,
+		data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
         <% end %>
 </div>
 
-<div class="container col-md-6">
+<div class="container col-md-12"></div>
 
-    <h1 class="title"><%= @image.title %></h1>
+<div class="container col-md-6 container-photo-original">
 
     <div class="row">
     <%= link_to image_tag(@image.photo.url(:large)), original_path(@image.user_id, @image), class: "img-thumbnail photo-original" %></div>
 
     <div class="img-thumbnail image-text col-md-10 col-md-offset-1">
   		<div class="row col-md-10 col-md-offset-1"><span class="shadow">Place: </span><%= @image.address %></div>
+      <div class="row col-md-10 col-md-offset-1"><span class="shadow">Uploaded by: </span><%= link_to(@user.name, user_path(@image.user_id)) %></div>
+      
   		<div class="row col-md-10 col-md-offset-1"><span class="shadow">What has to tell the uploader: </span><%= @image.description %></div>
 
       <center>

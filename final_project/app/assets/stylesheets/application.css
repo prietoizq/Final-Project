@@ -61,6 +61,8 @@ max-width: 100%;
   .text-welcome{margin-bottom: 0px;}
   .text-welcome > h1{font-size: 20px;}
   .well>.btn-lg.btn{width: 40%;}
+  .title{text-align: center;}
+  .container-buttoms>.btn{width: 40%;}
 }
 /*screen-sm*/
 @media (min-width: 768px) and (max-width: 992px) { 
@@ -68,16 +70,22 @@ max-width: 100%;
   .text-welcome > h1{font-size: 30px;}
   .text-welcome > p{font-size: 14px;}
   .well>.btn-lg.btn{width: 20%;}
+  .title{text-align: center;}
+  .container-buttoms>.btn{width: 40%;}
 }
 /*screen-md*/
 @media (min-width: 992px) and (max-width: 1200px) { 
   .text-welcome{margin-bottom: 15%;}
   .well>.btn-lg.btn{width: 15%;}
+  .title{margin-left: 48px;}
+  .container-buttoms>.btn{width: 20%;}
 }
 /*screen-lg corresponds with col-lg*/
 @media (min-width: 1200px) {  
   .text-welcome{margin-bottom: 20%;}
   .well>.btn-lg.btn{width: 15%;}
+  .title{margin-left: 48px;}
+  .container-buttoms>.btn{width: 20%;}
 }
 
 .container{
@@ -108,7 +116,7 @@ max-width: 100%;
 
 .title{
 	font-weight: bold;
-	font-size: 18px;
+	margin-top: 40px;
 }
 
 .panel-success{
@@ -150,8 +158,16 @@ max-width: 100%;
 	border-radius: 25px;
 }
 
+.container-buttoms{
+	margin-top: 15px;
+}
+
 .photo-original{
 	width: 80%;
+}
+
+.container-photo-original{
+	margin-top: 20px;
 }
 
 .photo-original:hover{
@@ -173,7 +189,7 @@ max-width: 100%;
 }
 
 .mapa_single{
-	height: 97%;
+	height: 93%;
 
 	text-align: center;
 	margin-bottom: 20px;
