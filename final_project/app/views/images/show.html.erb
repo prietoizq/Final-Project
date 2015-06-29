@@ -7,16 +7,19 @@
 
 <h1 class="title col-md-11"><%= @image.title %></h1>
 
-<div class="container col-md-6 container-buttoms">
-        <%= link_to "Back", photos_path, class: "btn btn-warning" %>
-        <% if current_user && current_user.get_email == @user.email %>
-
-        	<%= link_to "New", new_user_image_path(@user), class: "btn btn-success" %>
-        	<%= link_to "Edit", edit_user_image_path(@user, @image), class: "btn btn-info" %>
-        	<%= link_to "Destroy", user_image_path(@user, @image), method: :delete,
-		data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
-        <% end %>
-</div>
+    <% if current_user && current_user.get_email == @user.email %>
+        <div class="container col-md-6 container-buttoms">
+            <%= link_to "Back", photos_path, class: "btn btn-warning" %>
+          	<%= link_to "New", new_user_image_path(@user), class: "btn btn-success" %>
+          	<%= link_to "Edit", edit_user_image_path(@user, @image), class: "btn btn-info" %>
+          	<%= link_to "Destroy", user_image_path(@user, @image), method: :delete,
+    		data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        </div>
+    <% else %>
+        <div class="col-md-6 col-md-offset-1 individual-buttom">
+            <%= link_to "Back", photos_path, class: "btn btn-warning" %>
+        </div>
+    <% end %>
 
 <div class="container col-md-12"></div>
 

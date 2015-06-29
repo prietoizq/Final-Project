@@ -63,6 +63,7 @@ max-width: 100%;
   .well>.btn-lg.btn{width: 40%;}
   .title{text-align: center;}
   .container-buttoms>.btn{width: 40%;}
+  .individual-buttom{text-align: center;}
 }
 /*screen-sm*/
 @media (min-width: 768px) and (max-width: 992px) { 
@@ -72,6 +73,7 @@ max-width: 100%;
   .well>.btn-lg.btn{width: 20%;}
   .title{text-align: center;}
   .container-buttoms>.btn{width: 40%;}
+  .individual-buttom{text-align: center;}
 }
 /*screen-md*/
 @media (min-width: 992px) and (max-width: 1200px) { 
@@ -79,6 +81,8 @@ max-width: 100%;
   .well>.btn-lg.btn{width: 15%;}
   .title{margin-left: 48px;}
   .container-buttoms>.btn{width: 20%;}
+  .individual-buttom{text-align: left;margin-left:50px;}
+  .container-original{margin-left: 57px;}
 }
 /*screen-lg corresponds with col-lg*/
 @media (min-width: 1200px) {  
@@ -86,6 +90,8 @@ max-width: 100%;
   .well>.btn-lg.btn{width: 15%;}
   .title{margin-left: 48px;}
   .container-buttoms>.btn{width: 20%;}
+  .individual-buttom{text-align: left;margin-left:50px;}
+  .container-original{margin-left: 57px;}
 }
 
 .container{
@@ -115,6 +121,11 @@ max-width: 100%;
 }
 
 .title{
+	font-weight: bold;
+	margin-top: 40px;
+}
+
+.title-original{
 	font-weight: bold;
 	margin-top: 40px;
 }
@@ -160,6 +171,10 @@ max-width: 100%;
 
 .container-buttoms{
 	margin-top: 15px;
+}
+
+.individual-buttom>.btn{
+	width: 150px;
 }
 
 .photo-original{
@@ -256,5 +271,8 @@ max-width: 100%;
 	width: 50%;
 	margin-left: 25%;
 	margin-right: 25%;
+}
 
+#image{
+	margin-top: 30px;
 }

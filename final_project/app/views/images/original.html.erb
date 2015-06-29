@@ -1,20 +1,28 @@
-<div class="container well col-md-12">
-        <%= link_to "Go Back", user_image_path(@user, @image), class: "btn btn-lg btn-warning" %>
-        <% if current_user && current_user.get_email == @user.email %>
+<div class="container-original">
 
-        	<%= link_to "New image", new_user_image_path(@user), class: "btn btn-lg btn-success" %>
-        	<%= link_to "Edit image", edit_user_image_path(@user, @image), class: "btn btn-lg btn-info" %>
-        	<%= link_to "Destroy image", user_image_path(@user, @image), method: :delete,
-		data: {confirm: "Are you sure?"}, class: "btn btn-lg btn-danger" %>
-        <% end %>
+    <h1 class="title col-md-11"><%= @image.title %></h1>
+
+    <% if current_user && current_user.get_email == @user.email %>
+        <div class="container col-md-6 container-buttoms">
+            <%= link_to "Back", user_image_path(@user, @image), class: "btn btn-warning" %>
+            <%= link_to "New", new_user_image_path(@user), class: "btn btn-success" %>
+            <%= link_to "Edit", edit_user_image_path(@user, @image), class: "btn btn-info" %>
+            <%= link_to "Destroy", user_image_path(@user, @image), method: :delete,
+        data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        </div>
+    <% else %>
+        <div class="col-md-6 col-md-offset-1 individual-buttom">
+            <%= link_to "Back", photos_path, class: "btn btn-warning" %>
+        </div>
+    <% end %>
+
 </div>
 
+<div class="container col-md-12"></div>
 
 <div class="container col-md-10 col-md-offset-1">
 
-  <h1 class="title"><%= @image.title %></h1>
-
-	<div class="row col-md-12" id="image"><%= image_tag @image.photo.url(:original), class: "img-thumbnail" %></div>
+  <div class="row col-md-12" id="image"><%= image_tag @image.photo.url(:original), class: "img-thumbnail" %></div>
 
   <div class="container panel-effects col-md-10 col-md-offset-1">
   	<div class="panel panel-primary">
