@@ -11,14 +11,20 @@
 
         <h2 class="form-signin-heading">Please sign in</h2>
         <%= form_for(:session, url: login_path) do |f| %> 
-        <%= f.email_field :email, :placeholder => "Email", class: "form-control" %>
-        <%= f.password_field :password, :placeholder => "Password", class: "form-control"%>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <%= f.submit "LOG IN", class: "btn btn-primary col-md-12" %>
-      <% end %>
+            <%= f.email_field :email, :placeholder => "Email", class: "form-control" %>
+            <%= f.password_field :password, :placeholder => "Password", class: "form-control"%>
+            <%= f.submit "LOG IN", class: "btn btn-primary col-md-12" %>
+            <br>
+            <div class="checkbox">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+            </div>
+        <% end %>
+
+        <br>
+
+        <h3 class="form-signin-heading">Or, if you aren't inside:</h3>
+        <%= link_to "Signup", 'signup', class: "btn btn-success col-md-12" %>
 
 </div> 

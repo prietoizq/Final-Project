@@ -34,7 +34,7 @@
 		
 		<div class="container col-md-6 photo-large-container">
 			<div class="row col-md-12"><%= link_to image_tag(image.photo.url(:large)), user_image_path(@user, image), class: "img-thumbnail"  %></div>
-			<div class="row col-md-12 title"><%= image.title %></div>
+			<h4 class="row col-md-12"><%= image.title %></h4>
 			<div class="row col-md-12"><%= image.address %></div>
 
 			<% if current_user && current_user.admin? %>
