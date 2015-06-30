@@ -111,6 +111,7 @@ $(document).ready(function(){
         };
     });
 
+
 //INICIALIZO LAS VARIABLES USADAS EN LOS SCRIPTS PARA LA VISTA PHOTOS
     var counter = 0;
     var i = 0;
