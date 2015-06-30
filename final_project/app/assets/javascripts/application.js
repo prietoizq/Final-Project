@@ -123,6 +123,7 @@ $(document).ready(function(){
         $.ajax({
                 type: "GET",
                 url: "http://localhost:3000/photos",
+                cache: false,
                 data: "",
                 success: function(response){populate_page(response)},
                 error: function(){alert("Success: false");},
@@ -136,6 +137,7 @@ $(document).ready(function(){
             $.ajax({
                 type: "GET",
                 url: "http://localhost:3000/photos",
+                cache: false,
                 data: "",
                 success: function(response){populate_page(response)},
                 error: function(){alert("Success: false");},
@@ -155,6 +157,7 @@ $(document).ready(function(){
         $.ajax({
             type: "GET",
             url: "http://localhost:3000/photos",
+            cache: false,
             data: "",
             success: function(response){populate_page(response)},
             error: function(){alert("Success: false");},
@@ -177,6 +180,7 @@ $(document).ready(function(){
                     counter = counter + 1;
                     $.ajax({
                         url: "/images/search",
+                        cache: false,
                         data: {item: items[i].id},
                         success: function(response){$('.photo-list').append(response).fadeIn('slow')},
                         error: function(){console.log("Error")},

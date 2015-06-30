@@ -1,173 +1,173 @@
 <% if flash[:alert] %>
-  <div class="alert alert-warning" role="alert">
-        <strong><%= flash[:alert] %></strong>
-  </div>
+<div class="alert alert-warning" role="alert">
+      <strong><%= flash[:alert] %></strong>
+</div>
 <% end %>
 
 <% if @image.errors.any? %>
-	<div class="alert alert-danger" role="alert">
-    <ul>
-  		<% @image.errors.full_messages.each do |error_msg| %>
-  		  <div><%= error_msg %></div>
-  		<% end %>
-  	</ul>
-  </div>
+<div class="alert alert-danger" role="alert">
+  <ul>
+		<% @image.errors.full_messages.each do |error_msg| %>
+		  <div><%= error_msg %></div>
+		<% end %>
+	</ul>
+</div>
 <% end %>
 
 <h2 class="form-signin-heading title">Add a new photo!</h2>
 
 <div class="container col-md-5 col-md-offset-1 new-session">
 
-        <%= form_for [@user, @image], :html => { :multipart => true} do |f| %>
-		
-        <div class="form-group">
-          <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">Title</span>
-            <%= f.text_field :title, :placeholder => "Put a title!", class: "form-control"  %>
-          </div>
+      <%= form_for [@user, @image], :html => { :multipart => true} do |f| %>
+	
+      <div class="form-group">
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon" id="sizing-addon1">Title</span>
+          <%= f.text_field :title, :placeholder => "Put a title!", class: "form-control"  %>
         </div>
+      </div>
 
-        <div class="form-group">
-          <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">Address</span>
-            <%= f.text_field :address, :placeholder => "Where did you take it?", id: "pac-input", class: "form-control controls"  %>
-          </div>
+      <div class="form-group">
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon" id="sizing-addon1">Address</span>
+          <%= f.text_field :address, :placeholder => "Where did you take it?", id: "pac-input", class: "form-control controls"  %>
         </div>
+      </div>
 
-     <!-- latitude y longitude estan ocultos pero no podemos eliminarlos para que funcione address -->
-        <div class="form-group" hidden>
-          <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">latitude</span>
-            <%= f.text_field :latitude, :placeholder => "latitude!", class: "form-control"  %>
-          </div>
+   <!-- latitude y longitude estan ocultos pero no podemos eliminarlos para que funcione address -->
+      <div class="form-group" hidden>
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon" id="sizing-addon1">latitude</span>
+          <%= f.text_field :latitude, :placeholder => "latitude!", class: "form-control"  %>
         </div>
+      </div>
 
-        <div class="form-group" hidden>
-          <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">longitude</span>
-            <%= f.text_field :longitude, :placeholder => "longitude!", class: "form-control"  %>
-          </div>
+      <div class="form-group" hidden>
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon" id="sizing-addon1">longitude</span>
+          <%= f.text_field :longitude, :placeholder => "longitude!", class: "form-control"  %>
         </div>
+      </div>
 
-        <div class="form-group">
-          <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">Theme</span>
-              <select <%= f.text_field :theme, :placeholder => "Choose the type of place you want to share!", class: "form-control col-md-10" %>>
-                <option>Monument</option>
-                <option>Natural</option>
-                <option>Art</option>
-                <option>Entertainment</option>
-                <option>Landscape</option>
-                <option>Other</option>
-              </select>
-          </div>
+      <div class="form-group">
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon" id="sizing-addon1">Theme</span>
+            <select <%= f.text_field :theme, :placeholder => "Choose the type of place you want to share!", class: "form-control col-md-10" %>>
+              <option>Monument</option>
+              <option>Natural</option>
+              <option>Art</option>
+              <option>Entertainment</option>
+              <option>Landscape</option>
+              <option>Other</option>
+            </select>
         </div>
+      </div>
 
-        <div class="form-group">
-          <div class="input-group input-group-lg">
-            <span class="input-group-addon" id="sizing-addon1">Description</span>
-            <%= f.text_field :description, :placeholder => "Why do you want to share it?", class: "form-control" %>
-          </div>
+      <div class="form-group">
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon" id="sizing-addon1">Description</span>
+          <%= f.text_field :description, :placeholder => "Why do you want to share it?", class: "form-control" %>
         </div>
+      </div>
 
-        <div class="form-group">
-            <%= f.file_field :photo, :placeholder => "Pick the file", class: "form-control"%>
-        </div>
+      <div class="form-group">
+          <%= f.file_field :photo, :placeholder => "Pick the file", class: "form-control"%>
+      </div>
 
-        
-        <%= f.submit "SAVE", class: "btn btn-success col-xs-12 col-md-12" %>
-        <br>
-        <%= link_to("CANCEL", user_path(@user), class: "btn btn-warning col-xs-12 col-md-12") %>
-      <% end %>
+      
+      <%= f.submit "SAVE", class: "btn btn-success col-xs-12 col-md-12" %>
+      <br>
+      <%= link_to("CANCEL", user_path(@user), class: "btn btn-warning col-xs-12 col-md-12") %>
+    <% end %>
 </div> 
 
 
-  <div id="map-new" class="col-md-5">
-    <div id="map" style='width: 100%; height: 100%;'></div>
-  </div>
+<div id="map-new" class="col-md-5">
+  <div id="map" style='width: 100%; height: 100%;'></div>
+</div>
 
-  <script type="text/javascript">
-  handler = Gmaps.build('Google');
-  handler.buildMap({
-      provider: {
-        zoom : 14,
-        mapTypeId : google.maps.MapTypeId.ROADMAP,
-      },
-      internal: {
-        id: 'map'
-      }
-    });
-  </script>
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({
+    provider: {
+      zoom : 14,
+      mapTypeId : google.maps.MapTypeId.ROADMAP,
+    },
+    internal: {
+      id: 'map'
+    }
+  });
+</script>
 
-  <script type="text/javascript">
-  function initialize(){
-      var mapOptions = {
-        zoom: 6,
-        center: new google.maps.LatLng(40.353715, -3.702213)
-      };
+<script type="text/javascript">
+function initialize(){
+    var mapOptions = {
+      zoom: 6,
+      center: new google.maps.LatLng(40.353715, -3.702213)
+    };
 
-      var map = new google.maps.Map(document.getElementById('map'),
-        mapOptions);
+    var map = new google.maps.Map(document.getElementById('map'),
+      mapOptions);
 
-      var defaultBounds = new google.maps.LatLngBounds(
-          new google.maps.LatLng(44.338437, -10.228092),
-          new google.maps.LatLng(36.561334, 1.681087));
-      var options = {
-          bounds: defaultBounds
-      };
+    var defaultBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(44.338437, -10.228092),
+        new google.maps.LatLng(36.561334, 1.681087));
+    var options = {
+        bounds: defaultBounds
+    };
 
-      var input = document.getElementById('pac-input');
-      var autocomplete = new google.maps.places.Autocomplete(input);
-      autocomplete.bindTo('bounds', map);
+    var input = document.getElementById('pac-input');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo('bounds', map);
 
-        var infowindow = new google.maps.InfoWindow();
-    var marker = new google.maps.Marker({
-      map: map,
-      anchorPoint: new google.maps.Point(0, -29)
-    });
+      var infowindow = new google.maps.InfoWindow();
+  var marker = new google.maps.Marker({
+    map: map,
+    anchorPoint: new google.maps.Point(0, -29)
+  });
 
-    google.maps.event.addListener(autocomplete, 'place_changed', function() {
-      infowindow.close();
-      marker.setVisible(false);
-      var place = autocomplete.getPlace();
-      if (!place.geometry) {
-        window.alert("Autocomplete's returned place contains no geometry");
-        return;
-      }
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    infowindow.close();
+    marker.setVisible(false);
+    var place = autocomplete.getPlace();
+    if (!place.geometry) {
+      window.alert("Autocomplete's returned place contains no geometry");
+      return;
+    }
 
-      // If the place has a geometry, then present it on a map.
-      if (place.geometry.viewport) {
-        map.fitBounds(place.geometry.viewport);
-      } else {
-        map.setCenter(place.geometry.location);
-        map.setZoom(17);  // Why 17? Because it looks good.
-      }
-      marker.setIcon(/** @type {google.maps.Icon} */({
-        url: place.icon,
-        size: new google.maps.Size(71, 71),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(35, 35)
-      }));
-      marker.setPosition(place.geometry.location);
-      marker.setVisible(true);
+    // If the place has a geometry, then present it on a map.
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(17);  // Why 17? Because it looks good.
+    }
+    marker.setIcon(/** @type {google.maps.Icon} */({
+      url: place.icon,
+      size: new google.maps.Size(71, 71),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(17, 34),
+      scaledSize: new google.maps.Size(35, 35)
+    }));
+    marker.setPosition(place.geometry.location);
+    marker.setVisible(true);
 
-      var address = '';
-      if (place.address_components) {
-        address = [
-          (place.address_components[0] && place.address_components[0].short_name || ''),
-          (place.address_components[1] && place.address_components[1].short_name || ''),
-          (place.address_components[2] && place.address_components[2].short_name || '')
-        ].join(' ');
-      }
+    var address = '';
+    if (place.address_components) {
+      address = [
+        (place.address_components[0] && place.address_components[0].short_name || ''),
+        (place.address_components[1] && place.address_components[1].short_name || ''),
+        (place.address_components[2] && place.address_components[2].short_name || '')
+      ].join(' ');
+    }
 
-      infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-      infowindow.open(map, marker);
-    });
-  };
+    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+    infowindow.open(map, marker);
+  });
+};
 
-  google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 
 
 
